@@ -1,113 +1,78 @@
-# Weather oracle agent — Casper Agentic Buildathon 2026
+# Weather Oracle Agent — Casper Agentic Buildathon 2026
 
-A trust-minimized RWA oracle: an autonomous agent tracks rainfall, wind
-speed, and temperature for a region, posts readings on-chain to the Casper
-testnet, and earns a public, verifiable accuracy score over time as those
-readings are checked against ground truth. The accuracy score is the
-trust signal a parametric insurance product (or any downstream consumer)
-would build on.
+A trust-minimized RWA oracle: an autonomous AI agent tracks rainfall, wind speed, and temperature for a region, posts verified readings on-chain to the Casper Network, and earns a public accuracy score over time as those readings are checked against ground truth. The accuracy score is the trust signal a parametric insurance product — or any downstream consumer — can build on.
 
 ## Why this exists
 
-Global commodity and weather oracles are common; what's missing is a
-small, auditable, fully transparent example of the core primitive — an
-agent that fetches real-world data, scores its own confidence, signs a
-transaction, and is graded in public afterward. This repo is that
-primitive, built for the qualification round's "RWA Oracle Agent"
-archetype.
+Global weather oracles exist, but what's missing is a small, auditable, fully transparent primitive: an agent that fetches real-world data, scores its own confidence, signs a transaction, and is graded in public afterward. This repo is that primitive — built for the Casper Agentic Buildathon 2026.
 
-## Quickstart in VS Code
+## How it works
 
-1. Unzip and open the `casper-weather-oracle/` folder in VS Code (`File -> Open Folder`).
-2. VS Code will prompt to install recommended extensions (Python, rust-analyzer) — accept.
-3. Open a terminal in VS Code and run:
-   ```bash
-   ./scripts/setup.sh
-   ```
-   This creates `.venv`, installs Python dependencies, and copies `.env.example` to `.env`.
-4. Select the interpreter: `Cmd/Ctrl+Shift+P` -> "Python: Select Interpreter" -> `.venv/bin/python` (VS Code usually picks this up automatically from `.vscode/settings.json`).
-5. Fill in `.env` (weather API keys, contract hash once deployed, key path).
-6. For the contract side, you'll need the Rust toolchain installed separately (not covered by `setup.sh`):
-   ```bash
-   rustup target add wasm32-unknown-unknown
-   cargo install cargo-odra --locked
-   cd contracts/weather_oracle && cargo odra test
-   ```
+1. The **Python agent** fetches live weather readings (rainfall mm, wind speed km/h, temperature °C) from a public weather API on a scheduled interval
+2. It scores its own **confidence** by cross-checking against a secondary source
+3. If confidence clears the threshold, it signs and posts the reading on-chain via a **Casper testnet transaction**
+4. The **WeatherOracle contract** stores the reading and fires a `TriggerFired` event if a parametric threshold is crossed
+5. A slower **reconciliation job** compares posted readings against official ground-truth data and updates the agent's **on-chain accuracy score**
+6. A public **dashboard** shows live readings, trigger history, and the agent's trust score
 
 ## Architecture
 
-```
-agent/                  Python agent (off-chain)
-  config.py              Region, thresholds, fixed-point scaling
-  weather_source.py       Fetches live readings (Open-Meteo by default)
-  confidence.py           Scores agreement between sources
-  chain_client.py         Signs and submits deploys via pycspr
-  run_agent.py             Main scheduler loop
-  reconcile.py             Slower job: grades past readings, updates reputation
+## Buildathon Requirements
 
-contracts/weather_oracle/  Odra smart contracts (on-chain)
-  src/weather_oracle.rs     Stores readings, fires threshold-trigger events
-  src/reputation.rs         Tracks accuracy score from reconciled outcomes
-  tests/integration.rs      cargo-odra test suite
-```
+- **Working prototype on Casper Testnet with a transaction-producing on-chain component** — every scheduler tick that clears the confidence bar is a real signed deploy calling `submit_reading` on the deployed `WeatherOracle` contract
+- **Open-source GitHub repo with README** — this file
+- **Demo video** — shows the agent fetching and scoring a live reading, the resulting deploy hash on a Casper testnet explorer, and the dashboard displaying reading history and accuracy score
 
-See the agent loop and contract surface diagrams in `docs/` for the full
-data flow.
+## Quickstart
 
-## How it satisfies the qualification round requirements
+### Prerequisites
 
-- **Working prototype on Casper Testnet with a transaction-producing
-  on-chain component**: every scheduler tick that clears the confidence
-  bar is a real signed deploy calling `submit_reading` on the deployed
-  `WeatherOracle` contract.
-- **Open-source GitHub repo with README**: this file.
-- **Demo video**: record a run showing (1) the agent fetching and scoring
-  a live reading, (2) the resulting deploy hash on a Casper testnet
-  explorer, (3) the dashboard showing reading history and accuracy score.
-
-## Setup
+- Python 3.10+
+- Rust + cargo (https://rustup.rs)
+- WSL2 or Linux recommended for contract development
 
 ### Contracts
 
 ```bash
-cd contracts/weather_oracle
-cargo install cargo-odra --locked
+cd contracts/weather_oracle_new
 rustup target add wasm32-unknown-unknown
+cargo install cargo-odra --locked
 cargo odra test
-cargo odra build --backend casper
+cargo odra build
 ```
 
-Deploy to testnet with `casper-client put-deploy` using the generated
-`.wasm` in `wasm/`, or via Odra's livenet integration — see
-`odra.dev/docs/tutorials/deploying-on-casper`. Save the resulting
-contract hash into `.env` as `ORACLE_CONTRACT_HASH`.
+Deploy to testnet using casper-client put-deploy with the generated .wasm files in wasm/. Save the resulting contract hashes into .env.
 
 ### Agent
 
 ```bash
-cd agent
-python -m venv .venv && source .venv/bin/activate
-pip install -r requirements.txt
-cp ../.env.example ../.env   # fill in contract hash, key path, etc.
-casper-client keygen ./keys  # generates agent_secret_key.pem
+./scripts/setup.sh
+source .venv/bin/activate
+casper-client keygen ./keys
 python -m agent.run_agent
 ```
 
-## Known gaps to close before the demo (tracked honestly, not hidden)
+## Smart Contract Surface
 
-- `chain_client.py` flags one open question: confirm the exact `pycspr`
-  stored-contract-call constructor name against whatever version `pip`
-  resolves — the Casper docs show the CLI flow clearly but the Python
-  helper name has shifted across SDK releases.
-- `reconcile.py`'s `fetch_official_value` is a stub — needs a real
-  archival weather data source wired in before reconciliation can run
-  for real (intentionally kept separate from the live agent's source so
-  grading is against an independent source, not the same API grading
-  itself).
-- Secondary cross-check source in `weather_source.py` is currently a
-  stub returning `None` (moderate default confidence) — add a second
-  free weather API for genuine two-source agreement scoring.
+**WeatherOracle**
+- submit_reading(metric, value_fp, timestamp, confidence_bps) — agent only
+- get_latest_reading(metric) — public view
+- get_reading_at(index) — public view, for dashboard history
+- TriggerFired event — emitted when a reading crosses the parametric threshold
+
+**Reputation**
+- record_outcome(reading_index, posted_value_fp, official_value_fp) — reconciler only
+- get_accuracy_bps() — public view, returns accuracy as basis points (e.g. 9500 = 95%)
+- get_current_streak() — public view
+
+## Tech Stack
+
+- **Casper Network** — smart contract deployment target (testnet)
+- **Odra Framework** — Rust smart contract framework for Casper
+- **Python** — agent runtime (fetch, score, sign, post)
+- **pycspr** — Casper Python SDK for transaction signing
+- **Open-Meteo** — free weather API (no key required for basic usage)
 
 ## License
 
-MIT — see LICENSE.
+MIT
