@@ -1,0 +1,19 @@
+{
+  "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
+  "python.analysis.extraPaths": ["${workspaceFolder}"],
+  "python.testing.pytestEnabled": false,
+  "files.exclude": {
+    "**/__pycache__": true,
+    "**/*.pyc": true,
+    "**/target": true
+  },
+  "rust-analyzer.linkedProjects": [
+    "${workspaceFolder}/contracts/weather_oracle/Cargo.toml"
+  ],
+  "[python]": {
+    "editor.formatOnSave": false
+  },
+  "[rust]": {
+    "editor.formatOnSave": true
+  }
+}

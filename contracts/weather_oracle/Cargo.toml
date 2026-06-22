@@ -1,0 +1,21 @@
+[package]
+name = "weather_oracle"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+crate-type = ["rlib"]
+
+[dependencies]
+odra = { version = "2.3.1", default-features = false }
+
+[dev-dependencies]
+odra-test = { version = "2.3.1" }
+
+[features]
+default = []
+casper = ["odra/casper"]
+
+[profile.release]
+codegen-units = 1
+lto = true
