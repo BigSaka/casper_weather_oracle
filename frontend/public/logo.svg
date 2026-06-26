@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 120" fill="none">
+  <!-- Raindrop outer shape -->
+  <path d="M50 5 L85 55 C85 80 70 105 50 105 C30 105 15 80 15 55 Z" 
+        stroke="#1F293A" stroke-width="6" stroke-linejoin="round" fill="none"/>
+  <!-- Signal arcs inside raindrop -->
+  <circle cx="50" cy="72" r="8"  stroke="#1F293A" stroke-width="5" fill="none" stroke-dasharray="50.3 50.3" stroke-dashoffset="12.6"/>
+  <circle cx="50" cy="72" r="18" stroke="#1F293A" stroke-width="5" fill="none" stroke-dasharray="113.1 113.1" stroke-dashoffset="28.3"/>
+  <circle cx="50" cy="72" r="28" stroke="#1F293A" stroke-width="5" fill="none" stroke-dasharray="175.9 175.9" stroke-dashoffset="44"/>
+  <!-- Center dot -->
+  <circle cx="50" cy="72" r="4" fill="#1F293A"/>
+</svg>

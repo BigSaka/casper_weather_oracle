@@ -1,0 +1,99 @@
+/* WeatherOracle — Global Styles */
+/* Brand palette from Identity Guidelines:
+   Cosmic Navy:     #1F293A
+   Cloud Grey:      #6D7784
+   Vapor Grey:      #B4BDC7
+   Weather Slate:   #3C4759
+   Mist White:      #F9FAFB
+   Deep Sky Charcoal: #282C34
+*/
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --navy: #1F293A;
+  --slate: #3C4759;
+  --cloud: #6D7784;
+  --vapor: #B4BDC7;
+  --mist: #F9FAFB;
+  --charcoal: #282C34;
+  --bg: #0A0A0A;
+  --card: #111111;
+  --border: #1E1E1E;
+  --border-subtle: #161616;
+  --blue: #5B9CF6;
+  --green: #22C55E;
+  --orange: #F97316;
+  --font-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'DM Mono', 'Fira Code', monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--bg);
+  color: #FFFFFF;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+::selection {
+  background: #2A2A2A;
+  color: white;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2A2A2A;
+  border-radius: 2px;
+}
+
+/* Utility classes */
+.mono {
+  font-family: var(--font-mono);
+}
+
+.live-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--green);
+  animation: breathe 2s ease infinite;
+  vertical-align: middle;
+}
+
+@keyframes breathe {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(1.5); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
