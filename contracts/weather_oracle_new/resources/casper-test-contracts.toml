@@ -1,0 +1,9 @@
+last_updated = "2026-06-26T19:20:15Z"
+
+[[contracts]]
+name = "WeatherOracle"
+package_hash = "hash-945c3519301534820fd3eb5691462e89f3439783f13ed9f2b1910d2d84664dae"
+
+[[contracts]]
+name = "Reputation"
+package_hash = "hash-5334342652c03b03dcd5d838c58849375543047fd6cd5fe7abcc1811a0f7538f"
