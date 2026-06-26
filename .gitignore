@@ -7,3 +7,5 @@ target/
 wasm/
 .venv/
 node_modules/
+contracts/weather_oracle_new/deploy_log.txt
+contracts/weather_oracle_new/bin/deploy_livenet.rs
