@@ -1,0 +1,20 @@
+nohup: ignoring input
+2026-07-18 11:19:18 [INFO] weather-oracle-agent: WeatherOracle agent started
+  region:   Miami, FL (25.7617, -80.1918)
+  interval: 300s (every 5.0 minutes)
+  contract: 945c3519301534820fd3eb5691462e89f3439783f13ed9f2b1910d2d84664dae
+  min conf: 7000 bps (70%)
+2026-07-18 11:19:18 [INFO] weather-oracle-agent: --- tick #1 ---
+2026-07-18 11:19:18 [INFO] weather-oracle-agent: === tick started at 2026-07-18T10:19:18.954488+00:00 ===
+2026-07-18 11:19:20 [INFO] weather-oracle-agent.weather: Open-Meteo readings: rain=0.0mm wind=10.7km/h temp=27.4°C
+2026-07-18 11:19:21 [INFO] weather-oracle-agent.chain: submitting reading via CLI: metric=0 value_fp=0 conf=9500 bps
+2026-07-18 11:19:46 [INFO] weather-oracle-agent.chain: transaction confirmed: 43d8686c1a9ccf72f0cf58952cae73ea6cab05273270ef8bbda15d9cffd1263f
+2026-07-18 11:19:46 [INFO] weather-oracle-agent: POSTED rainfall_mm=0.00 (fp=0, confidence=9500 bps) → tx: 43d8686c1a9ccf72f0cf58952cae73ea6cab05273270ef8bbda15d9cffd1263f
+2026-07-18 11:19:48 [INFO] weather-oracle-agent.confidence: metric 1: primary=10.70 secondary=16.00 pct_diff=49.5% → 4000 bps confidence
+2026-07-18 11:19:48 [WARNING] weather-oracle-agent: SKIP wind_speed_kmh=10.70 — confidence 4000 bps below threshold 7000 bps
+2026-07-18 11:19:50 [INFO] weather-oracle-agent.confidence: metric 2: primary=27.40 secondary=27.00 pct_diff=1.5% → 9500 bps confidence
+2026-07-18 11:19:50 [INFO] weather-oracle-agent.chain: submitting reading via CLI: metric=2 value_fp=2740 conf=9500 bps
+2026-07-18 11:20:18 [INFO] weather-oracle-agent.chain: transaction confirmed: f4203a969e16511841fcd5d7148e2e10f5e7e61208317ffef0365a0648db0a07
+2026-07-18 11:20:18 [INFO] weather-oracle-agent: POSTED temperature_c=27.40 (fp=2740, confidence=9500 bps) → tx: f4203a969e16511841fcd5d7148e2e10f5e7e61208317ffef0365a0648db0a07
+2026-07-18 11:20:18 [INFO] weather-oracle-agent: === tick complete: {'rainfall_mm': {'status': 'posted', 'value': 0.0, 'value_fp': 0, 'confidence_bps': 9500, 'tx_hash': '43d8686c1a9ccf72f0cf58952cae73ea6cab05273270ef8bbda15d9cffd1263f'}, 'wind_speed_kmh': {'status': 'skipped', 'value': 10.7, 'confidence_bps': 4000}, 'temperature_c': {'status': 'posted', 'value': 27.4, 'value_fp': 2740, 'confidence_bps': 9500, 'tx_hash': 'f4203a969e16511841fcd5d7148e2e10f5e7e61208317ffef0365a0648db0a07'}} ===
+2026-07-18 11:20:18 [INFO] weather-oracle-agent: sleeping 300s until next tick...
