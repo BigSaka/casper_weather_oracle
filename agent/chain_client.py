@@ -1,56 +1,54 @@
 """
-Thin wrapper around pycspr (the Casper Python SDK) for signing and
-submitting `submit_reading` transactions to the WeatherOracle contract.
+Chain client for the WeatherOracle agent.
 
-NOTE ON pycspr VERSIONS: pycspr's API for calling a *stored* contract
-entry point (as opposed to a native transfer) has shifted across
-releases. The pattern below follows the documented `create_deploy_parameters`
-+ `NodeClient` flow from the Casper Python SDK docs. Before your first
-real testnet call, run `python -c "import pycspr; help(pycspr)"` against
-whatever version `pip` resolves and confirm the exact helper name for a
-stored-contract-by-hash deploy (commonly named something like
-`create_deploy` with a `StoredContractByHash` session target, or
-`create_contract_call` depending on version) — the buildathon mentors'
-support channel is also worth a ping here since this is the single most
-version-fragile part of the stack.
+Instead of using pycspr directly (which has version-fragile API surface),
+this module shells out to the Odra CLI binary which we know works correctly
+on Casper testnet protocol 2.2.2 with the PaymentLimited pricing mode fix
+in Odra 2.8.2.
+
+The CLI command that gets run per reading:
+    cargo run --bin weather_oracle_new_cli --features livenet --
+        contract WeatherOracle submit_reading
+        --metric <0|1|2>
+        --value_fp <int>
+        --timestamp <unix_seconds>
+        --source_confidence_bps <int>
+        --gas 3cspr
+
+Transaction hash is parsed from stdout and returned.
 """
+import logging
+import os
+import re
+import subprocess
+import time
 from dataclasses import dataclass
-import pathlib
-
-import pycspr
-from pycspr.client import NodeClient, NodeConnectionInfo
-from pycspr.types import PrivateKey
 
 from .config import AgentConfig
 
+log = logging.getLogger("weather-oracle-agent.chain")
 
-# Payment amount in motes for a submit_reading call. Start generous for
-# testnet (cheap) and tighten once you've measured real gas cost.
-SUBMIT_READING_PAYMENT_MOTES = 3_000_000_000  # 3 CSPR
+# Regex to extract transaction hash from Odra CLI stdout
+# Matches: 💁  INFO : Transaction "abc123..." successfully executed.
+TX_HASH_RE = re.compile(r'Transaction\s+"([0-9a-f]{64})"')
+
+# How long to wait for CLI to compile + submit + confirm (seconds)
+CLI_TIMEOUT_SECONDS = 180
 
 
 @dataclass
 class ChainClient:
     config: AgentConfig
-    node_client: NodeClient
-    signer: PrivateKey
 
     @classmethod
     def from_config(cls, config: AgentConfig) -> "ChainClient":
-        key_path = pathlib.Path(config.agent_secret_key_path)
-        if not key_path.exists():
+        # Verify the CLI project directory exists
+        if not os.path.isdir(config.cli_project_dir):
             raise FileNotFoundError(
-                f"Agent secret key not found at {key_path}. Generate one with "
-                f"`casper-client keygen ./keys` before running the agent."
+                f"Odra CLI project directory not found: {config.cli_project_dir}\n"
+                f"Set CLI_PROJECT_DIR in your .env to the contracts/weather_oracle_new path."
             )
-
-        # NodeConnectionInfo expects host/port separately in the documented
-        # API; if you're pointed at a full RPC URL instead, parse it here.
-        node_client = NodeClient(
-            NodeConnectionInfo(host=_extract_host(config.casper_node_url), port_rpc=7777)
-        )
-        signer = PrivateKey.from_pem_file(str(key_path))
-        return cls(config=config, node_client=node_client, signer=signer)
+        return cls(config=config)
 
     def submit_reading(
         self,
@@ -60,38 +58,70 @@ class ChainClient:
         source_confidence_bps: int,
     ) -> str:
         """
-        Builds, signs, and sends a deploy calling `submit_reading` on the
-        WeatherOracle contract. Returns the deploy hash as a hex string.
+        Calls the Odra CLI to submit a reading on-chain.
+        Returns the transaction hash as a hex string.
+        Raises RuntimeError if submission fails.
         """
-        deploy_params = pycspr.create_deploy_parameters(
-            account=self.signer,
-            chain_name=self.config.chain_name,
+        cmd = [
+            "cargo", "run",
+            "--bin", "weather_oracle_new_cli",
+            "--features", "livenet",
+            "--",
+            "contract", "WeatherOracle", "submit_reading",
+            "--metric", str(metric),
+            "--value_fp", str(value_fp),
+            "--timestamp", str(timestamp),
+            "--source_confidence_bps", str(source_confidence_bps),
+            "--gas", self.config.gas_per_call,
+        ]
+
+        log.info("submitting reading via CLI: metric=%d value_fp=%d conf=%d bps",
+                 metric, value_fp, source_confidence_bps)
+        log.debug("command: %s", " ".join(cmd))
+
+        try:
+            result = subprocess.run(
+                cmd,
+                cwd=self.config.cli_project_dir,
+                capture_output=True,
+                text=True,
+                timeout=CLI_TIMEOUT_SECONDS,
+                env={**os.environ, "RUST_BACKTRACE": "0"},
+            )
+        except subprocess.TimeoutExpired:
+            # SSE timeout — transaction may still have landed on-chain.
+            # Check the explorer manually if you see this frequently.
+            raise RuntimeError(
+                f"CLI timed out after {CLI_TIMEOUT_SECONDS}s. "
+                "Transaction may still be on-chain — check CSPR.live."
+            )
+
+        output = result.stdout + result.stderr
+        log.debug("CLI output:\n%s", output)
+
+        # Check for successful execution
+        if "successfully executed" in output:
+            match = TX_HASH_RE.search(output)
+            if match:
+                tx_hash = match.group(1)
+                log.info("transaction confirmed: %s", tx_hash)
+                return tx_hash
+            # Succeeded but hash not parsed — extract from LINK line instead
+            link_match = re.search(r'/transaction/([0-9a-f]{64})', output)
+            if link_match:
+                return link_match.group(1)
+            return "confirmed-hash-not-parsed"
+
+        # Handle SSE timeout — transaction likely landed, just not confirmed
+        if "Timeout waiting for transaction" in output:
+            log.warning(
+                "SSE timeout (ISP blocks streaming). "
+                "Transaction likely landed — check CSPR.live for confirmation."
+            )
+            # Return a placeholder so the agent doesn't crash and retry
+            raise RuntimeError("SSE timeout — transaction unconfirmed but likely on-chain")
+
+        # Actual failure
+        raise RuntimeError(
+            f"CLI submission failed.\nOutput:\n{output[-500:]}"
         )
-
-        # See module docstring: confirm this constructor name/shape against
-        # your installed pycspr version before first real use. Conceptually
-        # this needs to produce a deploy whose session is
-        # "call entry point `submit_reading` on stored contract
-        # `self.config.contract_hash` with the four named+typed args below."
-        deploy = pycspr.create_stored_contract_call_deploy(
-            params=deploy_params,
-            contract_hash=self.config.contract_hash,
-            entry_point="submit_reading",
-            args={
-                "metric": ("u8", metric),
-                "value_fp": ("i64", value_fp),
-                "timestamp": ("u64", timestamp),
-                "source_confidence_bps": ("u32", source_confidence_bps),
-            },
-            payment_amount=SUBMIT_READING_PAYMENT_MOTES,
-        )
-
-        deploy.approve(self.signer)
-        self.node_client.deploys.send(deploy)
-        return deploy.hash.hex()
-
-
-def _extract_host(node_url: str) -> str:
-    """Strips scheme/path from a full RPC URL, leaving just the host."""
-    stripped = node_url.replace("https://", "").replace("http://", "")
-    return stripped.split("/")[0]

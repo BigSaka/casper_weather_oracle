@@ -1,29 +1,26 @@
 """
-Confidence scoring: turns a primary reading (and, if available, a
-secondary cross-check) into a basis-points confidence score the contract
-can use to decide whether a reading is trustworthy enough to act on.
+Confidence scoring for weather readings.
 
-This is intentionally simple for the MVP — the point for the buildathon
-demo is that the agent does *some* verification work before writing
-on-chain, not that the scoring model is sophisticated. A natural next
-step is replacing `score_confidence` with a small model that also
-weighs recent historical accuracy (from the Reputation contract) into
-the score.
+Takes a primary reading and an optional secondary reading from a different
+source and returns a confidence score in basis points (0-10000).
+
+Scoring logic:
+- No secondary source available → 6500 bps (65%) — moderate confidence
+- Sources agree within 5% tolerance → 9500 bps (95%) — high confidence  
+- Sources agree within 10% tolerance → 8000 bps (80%) — good confidence
+- Sources agree within 20% tolerance → 7000 bps (70%) — acceptable
+- Sources disagree beyond 20% → 4000 bps (40%) — below posting threshold
+
+For zero/near-zero values (e.g. 0mm rainfall), we use absolute difference
+instead of percentage to avoid division-by-zero issues.
 """
+import logging
 from typing import Optional
 
-# How close two sources need to be (in source units, not fixed-point) to
-# count as full agreement. Loosened per metric since their natural scales
-# differ wildly (mm of rain vs km/h vs degrees C).
-AGREEMENT_TOLERANCE = {
-    0: 2.0,   # rainfall mm
-    1: 5.0,   # wind speed km/h
-    2: 1.5,   # temperature C
-}
+log = logging.getLogger("weather-oracle-agent.confidence")
 
-NO_SECONDARY_SOURCE_CONFIDENCE_BPS = 7000  # 70%, moderate trust
-FULL_AGREEMENT_CONFIDENCE_BPS = 9800
-MAX_DISAGREEMENT_CONFIDENCE_BPS = 3000
+# Absolute tolerance for near-zero values
+NEAR_ZERO_THRESHOLD = 0.5
 
 
 def score_confidence(
@@ -31,20 +28,44 @@ def score_confidence(
     primary_value: float,
     secondary_value: Optional[float],
 ) -> int:
-    """Returns a confidence score in basis points (0-10000)."""
+    """
+    Returns confidence in basis points (0-10000).
+    10000 bps = 100% confidence, 7000 bps = 70%, etc.
+    """
     if secondary_value is None:
-        return NO_SECONDARY_SOURCE_CONFIDENCE_BPS
+        log.debug("metric %d: no secondary source, returning moderate confidence", metric)
+        return 6500
 
-    tolerance = AGREEMENT_TOLERANCE.get(metric, 5.0)
-    diff = abs(primary_value - secondary_value)
+    # Use absolute difference for near-zero values
+    if abs(primary_value) < NEAR_ZERO_THRESHOLD:
+        abs_diff = abs(primary_value - secondary_value)
+        if abs_diff < NEAR_ZERO_THRESHOLD:
+            confidence = 9500
+        elif abs_diff < NEAR_ZERO_THRESHOLD * 2:
+            confidence = 8000
+        else:
+            confidence = 4000
+        log.debug(
+            "metric %d: near-zero values primary=%.2f secondary=%.2f "
+            "abs_diff=%.2f → %d bps",
+            metric, primary_value, secondary_value, abs_diff, confidence
+        )
+        return confidence
 
-    if diff <= tolerance:
-        return FULL_AGREEMENT_CONFIDENCE_BPS
+    # Percentage difference for normal values
+    pct_diff = abs(primary_value - secondary_value) / abs(primary_value)
 
-    # Linearly decay confidence as disagreement grows, floor at the
-    # "max disagreement" value rather than zero — a single noisy tick
-    # shouldn't fully zero out trust.
-    decay_range_bps = FULL_AGREEMENT_CONFIDENCE_BPS - MAX_DISAGREEMENT_CONFIDENCE_BPS
-    # Disagreement beyond 5x tolerance is treated as maximally unreliable.
-    overshoot = min(diff / (tolerance * 5), 1.0)
-    return int(FULL_AGREEMENT_CONFIDENCE_BPS - decay_range_bps * overshoot)
+    if pct_diff <= 0.05:
+        confidence = 9500   # within 5% — excellent agreement
+    elif pct_diff <= 0.10:
+        confidence = 8000   # within 10% — good agreement
+    elif pct_diff <= 0.20:
+        confidence = 7000   # within 20% — acceptable
+    else:
+        confidence = 4000   # beyond 20% — sources disagree, skip
+
+    log.info(
+        "metric %d: primary=%.2f secondary=%.2f pct_diff=%.1f%% → %d bps confidence",
+        metric, primary_value, secondary_value, pct_diff * 100, confidence
+    )
+    return confidence
