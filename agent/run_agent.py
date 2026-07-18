@@ -1,16 +1,7 @@
 """
 Main entry point for the WeatherOracle autonomous agent.
-
-Run modes:
-  python -m agent.run_agent          → runs forever, posts every POLL_INTERVAL_SECONDS
-  python -m agent.run_agent --once   → single tick then exit (good for testing)
-
-Environment variables (set in .env or shell):
-  POLL_INTERVAL_SECONDS   How often to post readings (default: 300 = 5 minutes)
-  ORACLE_CONTRACT_HASH    WeatherOracle contract package hash
-  CASPER_NODE_URL         RPC node URL (default: http://65.109.89.88:7777)
-  CLI_PROJECT_DIR         Path to contracts/weather_oracle_new (where cargo lives)
-  MIN_CONFIDENCE_BPS      Minimum confidence to post (default: 7000 = 70%)
+Now syncs readings to GitHub Gist after each on-chain post
+so the Railway API server can serve live data to the dashboard.
 """
 import argparse
 import logging
@@ -25,6 +16,7 @@ from .config import AgentConfig, DEFAULT_REGION, to_fixed_point, METRIC_NAMES
 from .weather_source import fetch_current_readings, fetch_secondary_check
 from .confidence import score_confidence
 from .chain_client import ChainClient
+from .gist_sync import post_reading as gist_post_reading
 
 logging.basicConfig(
     level=logging.INFO,
@@ -35,17 +27,10 @@ log = logging.getLogger("weather-oracle-agent")
 
 
 def run_once(config: AgentConfig, chain: ChainClient) -> dict:
-    """
-    One full scheduler tick — fetch all three metrics, score each,
-    post the ones that clear the confidence threshold.
-
-    Returns a summary dict with results for each metric.
-    """
     results = {}
     tick_time = datetime.now(timezone.utc)
     log.info("=== tick started at %s ===", tick_time.isoformat())
 
-    # Fetch primary readings
     try:
         readings = fetch_current_readings(config.region)
     except Exception as e:
@@ -54,11 +39,7 @@ def run_once(config: AgentConfig, chain: ChainClient) -> dict:
 
     for reading in readings:
         metric_name = METRIC_NAMES[reading.metric]
-
-        # Fetch secondary for confidence scoring
         secondary = fetch_secondary_check(config.region, reading.metric)
-
-        # Score confidence
         confidence_bps = score_confidence(
             reading.metric, reading.value, secondary
         )
@@ -76,7 +57,6 @@ def run_once(config: AgentConfig, chain: ChainClient) -> dict:
             }
             continue
 
-        # Post on-chain
         value_fp = to_fixed_point(reading.value)
         try:
             tx_hash = chain.submit_reading(
@@ -89,6 +69,16 @@ def run_once(config: AgentConfig, chain: ChainClient) -> dict:
                 "POSTED %s=%.2f (fp=%d, confidence=%d bps) → tx: %s",
                 metric_name, reading.value, value_fp, confidence_bps, tx_hash,
             )
+
+            # Sync to GitHub Gist so Railway API can serve live data
+            gist_post_reading(
+                metric_name=metric_name,
+                value=reading.value,
+                confidence_bps=confidence_bps,
+                tx_hash=tx_hash,
+                timestamp=reading.timestamp,
+            )
+
             results[metric_name] = {
                 "status": "posted",
                 "value": reading.value,
@@ -112,25 +102,17 @@ def run_once(config: AgentConfig, chain: ChainClient) -> dict:
 
 
 def run_forever(config: AgentConfig) -> None:
-    """Runs the agent loop indefinitely."""
     chain = ChainClient.from_config(config)
-
     log.info(
         "WeatherOracle agent started\n"
-        "  region:   %s (%.4f, %.4f)\n"
+        "  region:   %s\n"
         "  interval: %ds (every %.1f minutes)\n"
-        "  contract: %s\n"
-        "  min conf: %d bps (%.0f%%)",
+        "  contract: %s",
         config.region.name,
-        config.region.latitude,
-        config.region.longitude,
         config.poll_interval_seconds,
         config.poll_interval_seconds / 60,
         config.contract_hash,
-        config.min_confidence_bps_to_post,
-        config.min_confidence_bps_to_post / 100,
     )
-
     tick_count = 0
     while True:
         tick_count += 1
@@ -139,27 +121,14 @@ def run_forever(config: AgentConfig) -> None:
             run_once(config, chain)
         except Exception:
             log.exception("tick #%d failed unexpectedly", tick_count)
-
-        log.info(
-            "sleeping %ds until next tick...",
-            config.poll_interval_seconds
-        )
+        log.info("sleeping %ds...", config.poll_interval_seconds)
         time.sleep(config.poll_interval_seconds)
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="WeatherOracle autonomous agent")
-    parser.add_argument(
-        "--once",
-        action="store_true",
-        help="Run a single tick and exit (useful for testing)"
-    )
-    parser.add_argument(
-        "--interval",
-        type=int,
-        default=None,
-        help="Override poll interval in seconds"
-    )
+    parser.add_argument("--once", action="store_true")
+    parser.add_argument("--interval", type=int, default=None)
     args = parser.parse_args()
 
     cfg = AgentConfig(region=DEFAULT_REGION)
@@ -167,7 +136,6 @@ if __name__ == "__main__":
         cfg.poll_interval_seconds = args.interval
 
     if args.once:
-        log.info("running single tick (--once mode)")
         chain = ChainClient.from_config(cfg)
         results = run_once(cfg, chain)
         log.info("results: %s", results)
