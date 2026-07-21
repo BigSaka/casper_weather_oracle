@@ -1,6 +1,7 @@
 """
 Main entry point for the WeatherOracle autonomous agent.
-Now submits readings to Railway API backend after each on-chain post.
+Now syncs readings to GitHub Gist after each on-chain post
+so the Railway API server can serve live data to the dashboard.
 """
 import argparse
 import logging
@@ -15,7 +16,7 @@ from .config import AgentConfig, DEFAULT_REGION, to_fixed_point, METRIC_NAMES
 from .weather_source import fetch_current_readings, fetch_secondary_check
 from .confidence import score_confidence
 from .chain_client import ChainClient
-from .api_submit import submit_reading_to_backend
+from .gist_sync import post_reading as gist_post_reading
 
 logging.basicConfig(
     level=logging.INFO,
@@ -69,13 +70,13 @@ def run_once(config: AgentConfig, chain: ChainClient) -> dict:
                 metric_name, reading.value, value_fp, confidence_bps, tx_hash,
             )
 
-            # Submit to Railway API backend (so frontend can fetch with x402)
-            confidence_pct = round((confidence_bps / 10000) * 100)
-            submit_reading_to_backend(
+            # Sync to GitHub Gist so Railway API can serve live data
+            gist_post_reading(
                 metric_name=metric_name,
                 value=reading.value,
-                confidence_pct=confidence_pct,
-                timestamp=int(reading.timestamp),
+                confidence_bps=confidence_bps,
+                tx_hash=tx_hash,
+                timestamp=reading.timestamp,
             )
 
             results[metric_name] = {

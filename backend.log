@@ -1,0 +1,65 @@
+nohup: ignoring input
+INFO:     Started server process [7117]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     127.0.0.1:52274 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49574 - "GET /api/readings HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53106 - "GET /api/accuracy HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53112 - "GET /api/readings HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53106 - "GET /api/accuracy HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53112 - "GET /api/readings HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53112 - "GET /api/readings HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53106 - "GET /api/accuracy HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53118 - "GET /api/readings HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53112 - "GET /api/accuracy HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53120 - "GET /api/readings HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53126 - "GET /api/accuracy HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47782 - "GET /api/readings HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47798 - "GET /api/accuracy HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47800 - "GET /api/readings HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47800 - "GET /api/accuracy HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36442 - "GET /api/readings HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36442 - "GET /api/accuracy HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55296 - "GET /api/readings HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55296 - "GET /api/accuracy HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40896 - "GET /api/readings HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40908 - "GET /api/accuracy HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51992 - "GET /api/readings HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52000 - "GET /api/accuracy HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52004 - "GET /api/readings HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52004 - "GET /api/accuracy HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42858 - "GET /api/readings HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42858 - "GET /api/accuracy HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55318 - "GET /api/readings HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55322 - "GET /api/accuracy HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55338 - "GET /api/readings HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55338 - "GET /api/accuracy HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51530 - "GET /api/readings HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51530 - "GET /api/accuracy HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48386 - "GET /api/readings HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48386 - "GET /api/accuracy HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42650 - "GET /api/readings HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42650 - "GET /api/accuracy HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48116 - "GET /api/readings HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48116 - "GET /api/accuracy HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57574 - "GET /api/readings HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57574 - "GET /api/accuracy HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36976 - "GET /api/readings HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36976 - "GET /api/accuracy HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42722 - "GET /api/readings HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42722 - "GET /api/accuracy HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38008 - "GET /api/readings HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38008 - "GET /api/accuracy HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56622 - "GET /api/readings HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56622 - "GET /api/accuracy HTTP/1.1" 200 OK
+INFO:     127.0.0.1:32932 - "GET /api/readings HTTP/1.1" 200 OK
+INFO:     127.0.0.1:32932 - "GET /api/accuracy HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42050 - "GET /api/readings HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42052 - "GET /api/accuracy HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42064 - "GET /api/readings HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42064 - "GET /api/accuracy HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [7117]

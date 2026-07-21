@@ -1,9 +1,627 @@
 nohup: ignoring input
-2026-07-18 13:50:56 [INFO] weather-oracle-agent: WeatherOracle agent started
+2026-07-21 05:25:16 [INFO] weather-oracle-agent: WeatherOracle agent started
   region:   Miami, FL
   interval: 300s (every 5.0 minutes)
   contract: 945c3519301534820fd3eb5691462e89f3439783f13ed9f2b1910d2d84664dae
-2026-07-18 13:50:56 [INFO] weather-oracle-agent: --- tick #1 ---
-2026-07-18 13:50:56 [INFO] weather-oracle-agent: === tick started at 2026-07-18T12:50:56.555146+00:00 ===
-2026-07-18 13:50:58 [INFO] weather-oracle-agent.weather: Open-Meteo readings: rain=0.0mm wind=17.4km/h temp=29.3°C
-2026-07-18 13:50:59 [INFO] weather-oracle-agent.chain: submitting reading via CLI: metric=0 value_fp=0 conf=9500 bps
+2026-07-21 05:25:16 [INFO] weather-oracle-agent: --- tick #1 ---
+2026-07-21 05:25:16 [INFO] weather-oracle-agent: === tick started at 2026-07-21T04:25:16.591635+00:00 ===
+2026-07-21 05:25:17 [INFO] weather-oracle-agent.weather: Open-Meteo readings: rain=0.0mm wind=13.5km/h temp=27.9°C
+2026-07-21 05:25:18 [INFO] weather-oracle-agent.chain: submitting reading via CLI: metric=0 value_fp=0 conf=9500 bps
+2026-07-21 05:25:58 [INFO] weather-oracle-agent.chain: transaction confirmed: bde48f55b0de98b02438042b3385f6b10d891e9b4e2f596536aed9d540a1c247
+2026-07-21 05:25:58 [INFO] weather-oracle-agent: POSTED rainfall_mm=0.00 (fp=0, confidence=9500 bps) → tx: bde48f55b0de98b02438042b3385f6b10d891e9b4e2f596536aed9d540a1c247
+2026-07-21 05:26:00 [ERROR] weatheroracle-agent.gist: Failed to update gist: 404 Client Error: Not Found for url: https://api.github.com/gists/0955aac10d21ab78b31d11b8e2f1db27
+2026-07-21 05:26:02 [INFO] weather-oracle-agent.confidence: metric 1: primary=13.50 secondary=18.00 pct_diff=33.3% → 4000 bps confidence
+2026-07-21 05:26:02 [WARNING] weather-oracle-agent: SKIP wind_speed_kmh=13.50 — confidence 4000 bps below threshold 7000 bps
+2026-07-21 05:26:03 [INFO] weather-oracle-agent.confidence: metric 2: primary=27.90 secondary=29.00 pct_diff=3.9% → 9500 bps confidence
+2026-07-21 05:26:03 [INFO] weather-oracle-agent.chain: submitting reading via CLI: metric=2 value_fp=2790 conf=9500 bps
+2026-07-21 05:26:27 [INFO] weather-oracle-agent.chain: transaction confirmed: 72f3d7a0a2a253972fdf4be0a4aad66c4db3d766bba2e82b2fc4e2b72b9f285a
+2026-07-21 05:26:27 [INFO] weather-oracle-agent: POSTED temperature_c=27.90 (fp=2790, confidence=9500 bps) → tx: 72f3d7a0a2a253972fdf4be0a4aad66c4db3d766bba2e82b2fc4e2b72b9f285a
+2026-07-21 05:26:33 [ERROR] weatheroracle-agent.gist: Failed to update gist: 404 Client Error: Not Found for url: https://api.github.com/gists/0955aac10d21ab78b31d11b8e2f1db27
+2026-07-21 05:26:33 [INFO] weather-oracle-agent: === tick complete: {'rainfall_mm': {'status': 'posted', 'value': 0.0, 'value_fp': 0, 'confidence_bps': 9500, 'tx_hash': 'bde48f55b0de98b02438042b3385f6b10d891e9b4e2f596536aed9d540a1c247'}, 'wind_speed_kmh': {'status': 'skipped', 'value': 13.5, 'confidence_bps': 4000}, 'temperature_c': {'status': 'posted', 'value': 27.9, 'value_fp': 2790, 'confidence_bps': 9500, 'tx_hash': '72f3d7a0a2a253972fdf4be0a4aad66c4db3d766bba2e82b2fc4e2b72b9f285a'}} ===
+2026-07-21 05:26:33 [INFO] weather-oracle-agent: sleeping 300s...
+2026-07-21 05:31:56 [INFO] weather-oracle-agent: --- tick #2 ---
+2026-07-21 05:31:56 [INFO] weather-oracle-agent: === tick started at 2026-07-21T04:31:56.386024+00:00 ===
+2026-07-21 05:31:58 [INFO] weather-oracle-agent.weather: Open-Meteo readings: rain=0.0mm wind=14.0km/h temp=27.8°C
+2026-07-21 05:31:59 [INFO] weather-oracle-agent.chain: submitting reading via CLI: metric=0 value_fp=0 conf=9500 bps
+2026-07-21 05:32:30 [INFO] weather-oracle-agent.chain: transaction confirmed: 79bc04b729fd9e88a4196931c63f8541c9aef59ce9482f268f69e7b10d0557c0
+2026-07-21 05:32:30 [INFO] weather-oracle-agent: POSTED rainfall_mm=0.00 (fp=0, confidence=9500 bps) → tx: 79bc04b729fd9e88a4196931c63f8541c9aef59ce9482f268f69e7b10d0557c0
+2026-07-21 05:32:32 [ERROR] weatheroracle-agent.gist: Failed to update gist: 404 Client Error: Not Found for url: https://api.github.com/gists/0955aac10d21ab78b31d11b8e2f1db27
+2026-07-21 05:32:33 [INFO] weather-oracle-agent.confidence: metric 1: primary=14.00 secondary=18.00 pct_diff=28.6% → 4000 bps confidence
+2026-07-21 05:32:33 [WARNING] weather-oracle-agent: SKIP wind_speed_kmh=14.00 — confidence 4000 bps below threshold 7000 bps
+2026-07-21 05:32:34 [INFO] weather-oracle-agent.confidence: metric 2: primary=27.80 secondary=29.00 pct_diff=4.3% → 9500 bps confidence
+2026-07-21 05:32:34 [INFO] weather-oracle-agent.chain: submitting reading via CLI: metric=2 value_fp=2780 conf=9500 bps
+2026-07-21 05:33:17 [INFO] weather-oracle-agent.chain: transaction confirmed: f583f2b3d9f903314d9316c783fe673b2e9448f98285c7e71b1bbca94e7a6d81
+2026-07-21 05:33:17 [INFO] weather-oracle-agent: POSTED temperature_c=27.80 (fp=2780, confidence=9500 bps) → tx: f583f2b3d9f903314d9316c783fe673b2e9448f98285c7e71b1bbca94e7a6d81
+2026-07-21 05:33:19 [ERROR] weatheroracle-agent.gist: Failed to update gist: 404 Client Error: Not Found for url: https://api.github.com/gists/0955aac10d21ab78b31d11b8e2f1db27
+2026-07-21 05:33:19 [INFO] weather-oracle-agent: === tick complete: {'rainfall_mm': {'status': 'posted', 'value': 0.0, 'value_fp': 0, 'confidence_bps': 9500, 'tx_hash': '79bc04b729fd9e88a4196931c63f8541c9aef59ce9482f268f69e7b10d0557c0'}, 'wind_speed_kmh': {'status': 'skipped', 'value': 14.0, 'confidence_bps': 4000}, 'temperature_c': {'status': 'posted', 'value': 27.8, 'value_fp': 2780, 'confidence_bps': 9500, 'tx_hash': 'f583f2b3d9f903314d9316c783fe673b2e9448f98285c7e71b1bbca94e7a6d81'}} ===
+2026-07-21 05:33:19 [INFO] weather-oracle-agent: sleeping 300s...
+2026-07-21 05:38:45 [INFO] weather-oracle-agent: --- tick #3 ---
+2026-07-21 05:38:45 [INFO] weather-oracle-agent: === tick started at 2026-07-21T04:38:45.981718+00:00 ===
+2026-07-21 05:38:48 [INFO] weather-oracle-agent.weather: Open-Meteo readings: rain=0.0mm wind=14.0km/h temp=27.8°C
+2026-07-21 05:38:51 [INFO] weather-oracle-agent.chain: submitting reading via CLI: metric=0 value_fp=0 conf=9500 bps
+2026-07-21 05:39:33 [INFO] weather-oracle-agent.chain: transaction confirmed: 81b27413fe4b3b2b8d68d7007e2cea10e57f92f018ebebda20d04ffc8efb246f
+2026-07-21 05:39:33 [INFO] weather-oracle-agent: POSTED rainfall_mm=0.00 (fp=0, confidence=9500 bps) → tx: 81b27413fe4b3b2b8d68d7007e2cea10e57f92f018ebebda20d04ffc8efb246f
+2026-07-21 05:39:35 [ERROR] weatheroracle-agent.gist: Failed to update gist: 404 Client Error: Not Found for url: https://api.github.com/gists/0955aac10d21ab78b31d11b8e2f1db27
+2026-07-21 05:39:36 [INFO] weather-oracle-agent.confidence: metric 1: primary=14.00 secondary=18.00 pct_diff=28.6% → 4000 bps confidence
+2026-07-21 05:39:36 [WARNING] weather-oracle-agent: SKIP wind_speed_kmh=14.00 — confidence 4000 bps below threshold 7000 bps
+2026-07-21 05:39:37 [INFO] weather-oracle-agent.confidence: metric 2: primary=27.80 secondary=29.00 pct_diff=4.3% → 9500 bps confidence
+2026-07-21 05:39:37 [INFO] weather-oracle-agent.chain: submitting reading via CLI: metric=2 value_fp=2780 conf=9500 bps
+2026-07-21 05:40:20 [INFO] weather-oracle-agent.chain: transaction confirmed: fc8461c1c15d95a0383ccec2768f00402ac25ea56d8ce2d6ea5a219f068b47b2
+2026-07-21 05:40:20 [INFO] weather-oracle-agent: POSTED temperature_c=27.80 (fp=2780, confidence=9500 bps) → tx: fc8461c1c15d95a0383ccec2768f00402ac25ea56d8ce2d6ea5a219f068b47b2
+2026-07-21 05:40:22 [ERROR] weatheroracle-agent.gist: Failed to update gist: 404 Client Error: Not Found for url: https://api.github.com/gists/0955aac10d21ab78b31d11b8e2f1db27
+2026-07-21 05:40:22 [INFO] weather-oracle-agent: === tick complete: {'rainfall_mm': {'status': 'posted', 'value': 0.0, 'value_fp': 0, 'confidence_bps': 9500, 'tx_hash': '81b27413fe4b3b2b8d68d7007e2cea10e57f92f018ebebda20d04ffc8efb246f'}, 'wind_speed_kmh': {'status': 'skipped', 'value': 14.0, 'confidence_bps': 4000}, 'temperature_c': {'status': 'posted', 'value': 27.8, 'value_fp': 2780, 'confidence_bps': 9500, 'tx_hash': 'fc8461c1c15d95a0383ccec2768f00402ac25ea56d8ce2d6ea5a219f068b47b2'}} ===
+2026-07-21 05:40:22 [INFO] weather-oracle-agent: sleeping 300s...
+2026-07-21 05:45:37 [INFO] weather-oracle-agent: --- tick #4 ---
+2026-07-21 05:45:37 [INFO] weather-oracle-agent: === tick started at 2026-07-21T04:45:37.586494+00:00 ===
+2026-07-21 05:45:52 [ERROR] weather-oracle-agent: failed to fetch primary readings: HTTPSConnectionPool(host='api.open-meteo.com', port=443): Read timed out. (read timeout=15)
+2026-07-21 05:45:52 [INFO] weather-oracle-agent: sleeping 300s...
+2026-07-21 05:51:10 [INFO] weather-oracle-agent: --- tick #5 ---
+2026-07-21 05:51:10 [INFO] weather-oracle-agent: === tick started at 2026-07-21T04:51:10.608437+00:00 ===
+2026-07-21 05:51:16 [INFO] weather-oracle-agent.weather: Open-Meteo readings: rain=0.0mm wind=13.9km/h temp=27.8°C
+2026-07-21 05:51:19 [INFO] weather-oracle-agent.chain: submitting reading via CLI: metric=0 value_fp=0 conf=9500 bps
+2026-07-21 05:51:56 [INFO] weather-oracle-agent.chain: transaction confirmed: 71f6744584880daf51034f26c799a8b3d1c1ca225cc144982cb28f57fb1eab6e
+2026-07-21 05:51:56 [INFO] weather-oracle-agent: POSTED rainfall_mm=0.00 (fp=0, confidence=9500 bps) → tx: 71f6744584880daf51034f26c799a8b3d1c1ca225cc144982cb28f57fb1eab6e
+2026-07-21 05:51:58 [ERROR] weatheroracle-agent.gist: Failed to update gist: 404 Client Error: Not Found for url: https://api.github.com/gists/0955aac10d21ab78b31d11b8e2f1db27
+2026-07-21 05:51:58 [INFO] weather-oracle-agent.confidence: metric 1: primary=13.90 secondary=18.00 pct_diff=29.5% → 4000 bps confidence
+2026-07-21 05:51:58 [WARNING] weather-oracle-agent: SKIP wind_speed_kmh=13.90 — confidence 4000 bps below threshold 7000 bps
+2026-07-21 05:51:59 [INFO] weather-oracle-agent.confidence: metric 2: primary=27.80 secondary=29.00 pct_diff=4.3% → 9500 bps confidence
+2026-07-21 05:51:59 [INFO] weather-oracle-agent.chain: submitting reading via CLI: metric=2 value_fp=2780 conf=9500 bps
+2026-07-21 05:52:28 [INFO] weather-oracle-agent.chain: transaction confirmed: d87c29cfa6a4e714f957d5296e0ff15e9495e24ac6e16223199c4824d4be379f
+2026-07-21 05:52:28 [INFO] weather-oracle-agent: POSTED temperature_c=27.80 (fp=2780, confidence=9500 bps) → tx: d87c29cfa6a4e714f957d5296e0ff15e9495e24ac6e16223199c4824d4be379f
+2026-07-21 05:52:30 [ERROR] weatheroracle-agent.gist: Failed to update gist: 404 Client Error: Not Found for url: https://api.github.com/gists/0955aac10d21ab78b31d11b8e2f1db27
+2026-07-21 05:52:30 [INFO] weather-oracle-agent: === tick complete: {'rainfall_mm': {'status': 'posted', 'value': 0.0, 'value_fp': 0, 'confidence_bps': 9500, 'tx_hash': '71f6744584880daf51034f26c799a8b3d1c1ca225cc144982cb28f57fb1eab6e'}, 'wind_speed_kmh': {'status': 'skipped', 'value': 13.9, 'confidence_bps': 4000}, 'temperature_c': {'status': 'posted', 'value': 27.8, 'value_fp': 2780, 'confidence_bps': 9500, 'tx_hash': 'd87c29cfa6a4e714f957d5296e0ff15e9495e24ac6e16223199c4824d4be379f'}} ===
+2026-07-21 05:52:30 [INFO] weather-oracle-agent: sleeping 300s...
+2026-07-21 05:57:59 [INFO] weather-oracle-agent: --- tick #6 ---
+2026-07-21 05:57:59 [INFO] weather-oracle-agent: === tick started at 2026-07-21T04:57:59.846598+00:00 ===
+2026-07-21 05:58:00 [INFO] weather-oracle-agent.weather: Open-Meteo readings: rain=0.0mm wind=13.9km/h temp=27.8°C
+2026-07-21 05:58:01 [INFO] weather-oracle-agent.chain: submitting reading via CLI: metric=0 value_fp=0 conf=9500 bps
+2026-07-21 05:58:52 [INFO] weather-oracle-agent.chain: transaction confirmed: 98ee355609a0ce1be9debeb34a13106678ba510431802694d0ec61108c2225c0
+2026-07-21 05:58:52 [INFO] weather-oracle-agent: POSTED rainfall_mm=0.00 (fp=0, confidence=9500 bps) → tx: 98ee355609a0ce1be9debeb34a13106678ba510431802694d0ec61108c2225c0
+2026-07-21 05:58:54 [ERROR] weatheroracle-agent.gist: Failed to update gist: 404 Client Error: Not Found for url: https://api.github.com/gists/0955aac10d21ab78b31d11b8e2f1db27
+2026-07-21 05:58:55 [INFO] weather-oracle-agent.confidence: metric 1: primary=13.90 secondary=18.00 pct_diff=29.5% → 4000 bps confidence
+2026-07-21 05:58:55 [WARNING] weather-oracle-agent: SKIP wind_speed_kmh=13.90 — confidence 4000 bps below threshold 7000 bps
+2026-07-21 05:58:56 [INFO] weather-oracle-agent.confidence: metric 2: primary=27.80 secondary=29.00 pct_diff=4.3% → 9500 bps confidence
+2026-07-21 05:58:56 [INFO] weather-oracle-agent.chain: submitting reading via CLI: metric=2 value_fp=2780 conf=9500 bps
+2026-07-21 05:59:39 [INFO] weather-oracle-agent.chain: transaction confirmed: 42f8c434333927d750dbbd2e454af15fc99418939abfc94abb16890df7e2e11b
+2026-07-21 05:59:39 [INFO] weather-oracle-agent: POSTED temperature_c=27.80 (fp=2780, confidence=9500 bps) → tx: 42f8c434333927d750dbbd2e454af15fc99418939abfc94abb16890df7e2e11b
+2026-07-21 05:59:44 [ERROR] weatheroracle-agent.gist: Failed to update gist: 404 Client Error: Not Found for url: https://api.github.com/gists/0955aac10d21ab78b31d11b8e2f1db27
+2026-07-21 05:59:44 [INFO] weather-oracle-agent: === tick complete: {'rainfall_mm': {'status': 'posted', 'value': 0.0, 'value_fp': 0, 'confidence_bps': 9500, 'tx_hash': '98ee355609a0ce1be9debeb34a13106678ba510431802694d0ec61108c2225c0'}, 'wind_speed_kmh': {'status': 'skipped', 'value': 13.9, 'confidence_bps': 4000}, 'temperature_c': {'status': 'posted', 'value': 27.8, 'value_fp': 2780, 'confidence_bps': 9500, 'tx_hash': '42f8c434333927d750dbbd2e454af15fc99418939abfc94abb16890df7e2e11b'}} ===
+2026-07-21 05:59:44 [INFO] weather-oracle-agent: sleeping 300s...
+2026-07-21 06:05:11 [INFO] weather-oracle-agent: --- tick #7 ---
+2026-07-21 06:05:11 [INFO] weather-oracle-agent: === tick started at 2026-07-21T05:05:11.086349+00:00 ===
+2026-07-21 06:05:12 [INFO] weather-oracle-agent.weather: Open-Meteo readings: rain=0.0mm wind=13.4km/h temp=27.8°C
+2026-07-21 06:05:25 [INFO] weather-oracle-agent.chain: submitting reading via CLI: metric=0 value_fp=0 conf=9500 bps
+2026-07-21 06:05:56 [INFO] weather-oracle-agent.chain: transaction confirmed: 5c7f8f9074463c00b7249646433edd0c25dba0206494ab614f020fdadf37ee58
+2026-07-21 06:05:56 [INFO] weather-oracle-agent: POSTED rainfall_mm=0.00 (fp=0, confidence=9500 bps) → tx: 5c7f8f9074463c00b7249646433edd0c25dba0206494ab614f020fdadf37ee58
+2026-07-21 06:05:58 [ERROR] weatheroracle-agent.gist: Failed to update gist: 404 Client Error: Not Found for url: https://api.github.com/gists/0955aac10d21ab78b31d11b8e2f1db27
+2026-07-21 06:06:01 [INFO] weather-oracle-agent.confidence: metric 1: primary=13.40 secondary=18.00 pct_diff=34.3% → 4000 bps confidence
+2026-07-21 06:06:01 [WARNING] weather-oracle-agent: SKIP wind_speed_kmh=13.40 — confidence 4000 bps below threshold 7000 bps
+2026-07-21 06:06:03 [INFO] weather-oracle-agent.confidence: metric 2: primary=27.80 secondary=29.00 pct_diff=4.3% → 9500 bps confidence
+2026-07-21 06:06:03 [INFO] weather-oracle-agent.chain: submitting reading via CLI: metric=2 value_fp=2780 conf=9500 bps
+2026-07-21 06:06:28 [INFO] weather-oracle-agent.chain: transaction confirmed: bf886e5771b090436d89fe3da30e74a7955388a8d4fee09fc5efd6ab35a5d8b9
+2026-07-21 06:06:28 [INFO] weather-oracle-agent: POSTED temperature_c=27.80 (fp=2780, confidence=9500 bps) → tx: bf886e5771b090436d89fe3da30e74a7955388a8d4fee09fc5efd6ab35a5d8b9
+2026-07-21 06:06:30 [ERROR] weatheroracle-agent.gist: Failed to update gist: 404 Client Error: Not Found for url: https://api.github.com/gists/0955aac10d21ab78b31d11b8e2f1db27
+2026-07-21 06:06:30 [INFO] weather-oracle-agent: === tick complete: {'rainfall_mm': {'status': 'posted', 'value': 0.0, 'value_fp': 0, 'confidence_bps': 9500, 'tx_hash': '5c7f8f9074463c00b7249646433edd0c25dba0206494ab614f020fdadf37ee58'}, 'wind_speed_kmh': {'status': 'skipped', 'value': 13.4, 'confidence_bps': 4000}, 'temperature_c': {'status': 'posted', 'value': 27.8, 'value_fp': 2780, 'confidence_bps': 9500, 'tx_hash': 'bf886e5771b090436d89fe3da30e74a7955388a8d4fee09fc5efd6ab35a5d8b9'}} ===
+2026-07-21 06:06:30 [INFO] weather-oracle-agent: sleeping 300s...
+2026-07-21 06:11:55 [INFO] weather-oracle-agent: --- tick #8 ---
+2026-07-21 06:11:55 [INFO] weather-oracle-agent: === tick started at 2026-07-21T05:11:55.170142+00:00 ===
+2026-07-21 06:11:58 [INFO] weather-oracle-agent.weather: Open-Meteo readings: rain=0.0mm wind=13.4km/h temp=27.8°C
+2026-07-21 06:11:58 [INFO] weather-oracle-agent.chain: submitting reading via CLI: metric=0 value_fp=0 conf=9500 bps
+2026-07-21 06:12:36 [INFO] weather-oracle-agent.chain: transaction confirmed: 27cfef92772864e0ead0ad7503caa50399425ba22a7083891d90568e8bfc1654
+2026-07-21 06:12:36 [INFO] weather-oracle-agent: POSTED rainfall_mm=0.00 (fp=0, confidence=9500 bps) → tx: 27cfef92772864e0ead0ad7503caa50399425ba22a7083891d90568e8bfc1654
+2026-07-21 06:12:38 [ERROR] weatheroracle-agent.gist: Failed to update gist: 404 Client Error: Not Found for url: https://api.github.com/gists/0955aac10d21ab78b31d11b8e2f1db27
+2026-07-21 06:12:39 [INFO] weather-oracle-agent.confidence: metric 1: primary=13.40 secondary=18.00 pct_diff=34.3% → 4000 bps confidence
+2026-07-21 06:12:39 [WARNING] weather-oracle-agent: SKIP wind_speed_kmh=13.40 — confidence 4000 bps below threshold 7000 bps
+2026-07-21 06:12:40 [INFO] weather-oracle-agent.confidence: metric 2: primary=27.80 secondary=29.00 pct_diff=4.3% → 9500 bps confidence
+2026-07-21 06:12:40 [INFO] weather-oracle-agent.chain: submitting reading via CLI: metric=2 value_fp=2780 conf=9500 bps
+2026-07-21 06:13:26 [INFO] weather-oracle-agent.chain: transaction confirmed: 7a300bfc5de749f610cb49a0e560abcfca4623caeaa2e4abc1125f3c16f847a0
+2026-07-21 06:13:26 [INFO] weather-oracle-agent: POSTED temperature_c=27.80 (fp=2780, confidence=9500 bps) → tx: 7a300bfc5de749f610cb49a0e560abcfca4623caeaa2e4abc1125f3c16f847a0
+2026-07-21 06:13:28 [ERROR] weatheroracle-agent.gist: Failed to update gist: 404 Client Error: Not Found for url: https://api.github.com/gists/0955aac10d21ab78b31d11b8e2f1db27
+2026-07-21 06:13:28 [INFO] weather-oracle-agent: === tick complete: {'rainfall_mm': {'status': 'posted', 'value': 0.0, 'value_fp': 0, 'confidence_bps': 9500, 'tx_hash': '27cfef92772864e0ead0ad7503caa50399425ba22a7083891d90568e8bfc1654'}, 'wind_speed_kmh': {'status': 'skipped', 'value': 13.4, 'confidence_bps': 4000}, 'temperature_c': {'status': 'posted', 'value': 27.8, 'value_fp': 2780, 'confidence_bps': 9500, 'tx_hash': '7a300bfc5de749f610cb49a0e560abcfca4623caeaa2e4abc1125f3c16f847a0'}} ===
+2026-07-21 06:13:28 [INFO] weather-oracle-agent: sleeping 300s...
+2026-07-21 06:18:54 [INFO] weather-oracle-agent: --- tick #9 ---
+2026-07-21 06:18:54 [INFO] weather-oracle-agent: === tick started at 2026-07-21T05:18:54.737849+00:00 ===
+2026-07-21 06:18:55 [INFO] weather-oracle-agent.weather: Open-Meteo readings: rain=0.0mm wind=14.2km/h temp=27.8°C
+2026-07-21 06:18:57 [INFO] weather-oracle-agent.chain: submitting reading via CLI: metric=0 value_fp=0 conf=9500 bps
+2026-07-21 06:19:26 [INFO] weather-oracle-agent.chain: transaction confirmed: d2f65ff974608054f03f52fb347193cf67e6db5a5b40156f43ab0f8914b2d02a
+2026-07-21 06:19:26 [INFO] weather-oracle-agent: POSTED rainfall_mm=0.00 (fp=0, confidence=9500 bps) → tx: d2f65ff974608054f03f52fb347193cf67e6db5a5b40156f43ab0f8914b2d02a
+2026-07-21 06:19:27 [ERROR] weatheroracle-agent.gist: Failed to update gist: 404 Client Error: Not Found for url: https://api.github.com/gists/0955aac10d21ab78b31d11b8e2f1db27
+2026-07-21 06:19:28 [INFO] weather-oracle-agent.confidence: metric 1: primary=14.20 secondary=18.00 pct_diff=26.8% → 4000 bps confidence
+2026-07-21 06:19:28 [WARNING] weather-oracle-agent: SKIP wind_speed_kmh=14.20 — confidence 4000 bps below threshold 7000 bps
+2026-07-21 06:19:29 [INFO] weather-oracle-agent.confidence: metric 2: primary=27.80 secondary=29.00 pct_diff=4.3% → 9500 bps confidence
+2026-07-21 06:19:29 [INFO] weather-oracle-agent.chain: submitting reading via CLI: metric=2 value_fp=2780 conf=9500 bps
+2026-07-21 06:19:58 [INFO] weather-oracle-agent.chain: transaction confirmed: f879db3ac5f8f87f1cd5725143ed3569f6aac4c4158a082f1aee62bf7c0cbab2
+2026-07-21 06:19:58 [INFO] weather-oracle-agent: POSTED temperature_c=27.80 (fp=2780, confidence=9500 bps) → tx: f879db3ac5f8f87f1cd5725143ed3569f6aac4c4158a082f1aee62bf7c0cbab2
+2026-07-21 06:19:59 [ERROR] weatheroracle-agent.gist: Failed to update gist: 404 Client Error: Not Found for url: https://api.github.com/gists/0955aac10d21ab78b31d11b8e2f1db27
+2026-07-21 06:19:59 [INFO] weather-oracle-agent: === tick complete: {'rainfall_mm': {'status': 'posted', 'value': 0.0, 'value_fp': 0, 'confidence_bps': 9500, 'tx_hash': 'd2f65ff974608054f03f52fb347193cf67e6db5a5b40156f43ab0f8914b2d02a'}, 'wind_speed_kmh': {'status': 'skipped', 'value': 14.2, 'confidence_bps': 4000}, 'temperature_c': {'status': 'posted', 'value': 27.8, 'value_fp': 2780, 'confidence_bps': 9500, 'tx_hash': 'f879db3ac5f8f87f1cd5725143ed3569f6aac4c4158a082f1aee62bf7c0cbab2'}} ===
+2026-07-21 06:19:59 [INFO] weather-oracle-agent: sleeping 300s...
+2026-07-21 06:25:08 [INFO] weather-oracle-agent: --- tick #10 ---
+2026-07-21 06:25:08 [INFO] weather-oracle-agent: === tick started at 2026-07-21T05:25:08.710193+00:00 ===
+2026-07-21 06:25:18 [ERROR] weather-oracle-agent: failed to fetch primary readings: HTTPSConnectionPool(host='api.open-meteo.com', port=443): Max retries exceeded with url: /v1/forecast?latitude=25.7617&longitude=-80.1918&current=temperature_2m%2Cwind_speed_10m%2Cprecipitation&timezone=UTC (Caused by NameResolutionError("HTTPSConnection(host='api.open-meteo.com', port=443): Failed to resolve 'api.open-meteo.com' ([Errno -3] Temporary failure in name resolution)"))
+2026-07-21 06:25:18 [INFO] weather-oracle-agent: sleeping 300s...
+2026-07-21 06:30:18 [INFO] weather-oracle-agent: --- tick #11 ---
+2026-07-21 06:30:18 [INFO] weather-oracle-agent: === tick started at 2026-07-21T05:30:18.746842+00:00 ===
+2026-07-21 06:30:28 [ERROR] weather-oracle-agent: failed to fetch primary readings: HTTPSConnectionPool(host='api.open-meteo.com', port=443): Max retries exceeded with url: /v1/forecast?latitude=25.7617&longitude=-80.1918&current=temperature_2m%2Cwind_speed_10m%2Cprecipitation&timezone=UTC (Caused by NameResolutionError("HTTPSConnection(host='api.open-meteo.com', port=443): Failed to resolve 'api.open-meteo.com' ([Errno -3] Temporary failure in name resolution)"))
+2026-07-21 06:30:28 [INFO] weather-oracle-agent: sleeping 300s...
+2026-07-21 06:35:28 [INFO] weather-oracle-agent: --- tick #12 ---
+2026-07-21 06:35:28 [INFO] weather-oracle-agent: === tick started at 2026-07-21T05:35:28.765223+00:00 ===
+2026-07-21 06:35:38 [ERROR] weather-oracle-agent: failed to fetch primary readings: HTTPSConnectionPool(host='api.open-meteo.com', port=443): Max retries exceeded with url: /v1/forecast?latitude=25.7617&longitude=-80.1918&current=temperature_2m%2Cwind_speed_10m%2Cprecipitation&timezone=UTC (Caused by NameResolutionError("HTTPSConnection(host='api.open-meteo.com', port=443): Failed to resolve 'api.open-meteo.com' ([Errno -3] Temporary failure in name resolution)"))
+2026-07-21 06:35:38 [INFO] weather-oracle-agent: sleeping 300s...
+2026-07-21 06:40:38 [INFO] weather-oracle-agent: --- tick #13 ---
+2026-07-21 06:40:38 [INFO] weather-oracle-agent: === tick started at 2026-07-21T05:40:38.786424+00:00 ===
+2026-07-21 06:40:48 [ERROR] weather-oracle-agent: failed to fetch primary readings: HTTPSConnectionPool(host='api.open-meteo.com', port=443): Max retries exceeded with url: /v1/forecast?latitude=25.7617&longitude=-80.1918&current=temperature_2m%2Cwind_speed_10m%2Cprecipitation&timezone=UTC (Caused by NameResolutionError("HTTPSConnection(host='api.open-meteo.com', port=443): Failed to resolve 'api.open-meteo.com' ([Errno -3] Temporary failure in name resolution)"))
+2026-07-21 06:40:48 [INFO] weather-oracle-agent: sleeping 300s...
+2026-07-21 06:45:48 [INFO] weather-oracle-agent: --- tick #14 ---
+2026-07-21 06:45:48 [INFO] weather-oracle-agent: === tick started at 2026-07-21T05:45:48.800493+00:00 ===
+2026-07-21 06:45:58 [ERROR] weather-oracle-agent: failed to fetch primary readings: HTTPSConnectionPool(host='api.open-meteo.com', port=443): Max retries exceeded with url: /v1/forecast?latitude=25.7617&longitude=-80.1918&current=temperature_2m%2Cwind_speed_10m%2Cprecipitation&timezone=UTC (Caused by NameResolutionError("HTTPSConnection(host='api.open-meteo.com', port=443): Failed to resolve 'api.open-meteo.com' ([Errno -3] Temporary failure in name resolution)"))
+2026-07-21 06:45:58 [INFO] weather-oracle-agent: sleeping 300s...
+2026-07-21 06:50:58 [INFO] weather-oracle-agent: --- tick #15 ---
+2026-07-21 06:50:58 [INFO] weather-oracle-agent: === tick started at 2026-07-21T05:50:58.821684+00:00 ===
+2026-07-21 06:51:08 [ERROR] weather-oracle-agent: failed to fetch primary readings: HTTPSConnectionPool(host='api.open-meteo.com', port=443): Max retries exceeded with url: /v1/forecast?latitude=25.7617&longitude=-80.1918&current=temperature_2m%2Cwind_speed_10m%2Cprecipitation&timezone=UTC (Caused by NameResolutionError("HTTPSConnection(host='api.open-meteo.com', port=443): Failed to resolve 'api.open-meteo.com' ([Errno -3] Temporary failure in name resolution)"))
+2026-07-21 06:51:08 [INFO] weather-oracle-agent: sleeping 300s...
+2026-07-21 06:56:08 [INFO] weather-oracle-agent: --- tick #16 ---
+2026-07-21 06:56:08 [INFO] weather-oracle-agent: === tick started at 2026-07-21T05:56:08.837442+00:00 ===
+2026-07-21 06:56:18 [ERROR] weather-oracle-agent: failed to fetch primary readings: HTTPSConnectionPool(host='api.open-meteo.com', port=443): Max retries exceeded with url: /v1/forecast?latitude=25.7617&longitude=-80.1918&current=temperature_2m%2Cwind_speed_10m%2Cprecipitation&timezone=UTC (Caused by NameResolutionError("HTTPSConnection(host='api.open-meteo.com', port=443): Failed to resolve 'api.open-meteo.com' ([Errno -3] Temporary failure in name resolution)"))
+2026-07-21 06:56:18 [INFO] weather-oracle-agent: sleeping 300s...
+2026-07-21 07:01:18 [INFO] weather-oracle-agent: --- tick #17 ---
+2026-07-21 07:01:18 [INFO] weather-oracle-agent: === tick started at 2026-07-21T06:01:18.857278+00:00 ===
+2026-07-21 07:01:28 [ERROR] weather-oracle-agent: failed to fetch primary readings: HTTPSConnectionPool(host='api.open-meteo.com', port=443): Max retries exceeded with url: /v1/forecast?latitude=25.7617&longitude=-80.1918&current=temperature_2m%2Cwind_speed_10m%2Cprecipitation&timezone=UTC (Caused by NameResolutionError("HTTPSConnection(host='api.open-meteo.com', port=443): Failed to resolve 'api.open-meteo.com' ([Errno -3] Temporary failure in name resolution)"))
+2026-07-21 07:01:28 [INFO] weather-oracle-agent: sleeping 300s...
+2026-07-21 07:06:28 [INFO] weather-oracle-agent: --- tick #18 ---
+2026-07-21 07:06:28 [INFO] weather-oracle-agent: === tick started at 2026-07-21T06:06:28.873160+00:00 ===
+2026-07-21 07:06:38 [ERROR] weather-oracle-agent: failed to fetch primary readings: HTTPSConnectionPool(host='api.open-meteo.com', port=443): Max retries exceeded with url: /v1/forecast?latitude=25.7617&longitude=-80.1918&current=temperature_2m%2Cwind_speed_10m%2Cprecipitation&timezone=UTC (Caused by NameResolutionError("HTTPSConnection(host='api.open-meteo.com', port=443): Failed to resolve 'api.open-meteo.com' ([Errno -3] Temporary failure in name resolution)"))
+2026-07-21 07:06:38 [INFO] weather-oracle-agent: sleeping 300s...
+2026-07-21 07:11:38 [INFO] weather-oracle-agent: --- tick #19 ---
+2026-07-21 07:11:38 [INFO] weather-oracle-agent: === tick started at 2026-07-21T06:11:38.894633+00:00 ===
+2026-07-21 07:11:48 [ERROR] weather-oracle-agent: failed to fetch primary readings: HTTPSConnectionPool(host='api.open-meteo.com', port=443): Max retries exceeded with url: /v1/forecast?latitude=25.7617&longitude=-80.1918&current=temperature_2m%2Cwind_speed_10m%2Cprecipitation&timezone=UTC (Caused by NameResolutionError("HTTPSConnection(host='api.open-meteo.com', port=443): Failed to resolve 'api.open-meteo.com' ([Errno -3] Temporary failure in name resolution)"))
+2026-07-21 07:11:48 [INFO] weather-oracle-agent: sleeping 300s...
+2026-07-21 07:16:48 [INFO] weather-oracle-agent: --- tick #20 ---
+2026-07-21 07:16:48 [INFO] weather-oracle-agent: === tick started at 2026-07-21T06:16:48.913625+00:00 ===
+2026-07-21 07:16:58 [ERROR] weather-oracle-agent: failed to fetch primary readings: HTTPSConnectionPool(host='api.open-meteo.com', port=443): Max retries exceeded with url: /v1/forecast?latitude=25.7617&longitude=-80.1918&current=temperature_2m%2Cwind_speed_10m%2Cprecipitation&timezone=UTC (Caused by NameResolutionError("HTTPSConnection(host='api.open-meteo.com', port=443): Failed to resolve 'api.open-meteo.com' ([Errno -3] Temporary failure in name resolution)"))
+2026-07-21 07:16:58 [INFO] weather-oracle-agent: sleeping 300s...
+2026-07-21 07:21:58 [INFO] weather-oracle-agent: --- tick #21 ---
+2026-07-21 07:21:58 [INFO] weather-oracle-agent: === tick started at 2026-07-21T06:21:58.933338+00:00 ===
+2026-07-21 07:22:08 [ERROR] weather-oracle-agent: failed to fetch primary readings: HTTPSConnectionPool(host='api.open-meteo.com', port=443): Max retries exceeded with url: /v1/forecast?latitude=25.7617&longitude=-80.1918&current=temperature_2m%2Cwind_speed_10m%2Cprecipitation&timezone=UTC (Caused by NameResolutionError("HTTPSConnection(host='api.open-meteo.com', port=443): Failed to resolve 'api.open-meteo.com' ([Errno -3] Temporary failure in name resolution)"))
+2026-07-21 07:22:08 [INFO] weather-oracle-agent: sleeping 300s...
+2026-07-21 07:27:08 [INFO] weather-oracle-agent: --- tick #22 ---
+2026-07-21 07:27:08 [INFO] weather-oracle-agent: === tick started at 2026-07-21T06:27:08.949776+00:00 ===
+2026-07-21 07:27:18 [ERROR] weather-oracle-agent: failed to fetch primary readings: HTTPSConnectionPool(host='api.open-meteo.com', port=443): Max retries exceeded with url: /v1/forecast?latitude=25.7617&longitude=-80.1918&current=temperature_2m%2Cwind_speed_10m%2Cprecipitation&timezone=UTC (Caused by NameResolutionError("HTTPSConnection(host='api.open-meteo.com', port=443): Failed to resolve 'api.open-meteo.com' ([Errno -3] Temporary failure in name resolution)"))
+2026-07-21 07:27:18 [INFO] weather-oracle-agent: sleeping 300s...
+2026-07-21 07:32:18 [INFO] weather-oracle-agent: --- tick #23 ---
+2026-07-21 07:32:18 [INFO] weather-oracle-agent: === tick started at 2026-07-21T06:32:18.971420+00:00 ===
+2026-07-21 07:32:28 [ERROR] weather-oracle-agent: failed to fetch primary readings: HTTPSConnectionPool(host='api.open-meteo.com', port=443): Max retries exceeded with url: /v1/forecast?latitude=25.7617&longitude=-80.1918&current=temperature_2m%2Cwind_speed_10m%2Cprecipitation&timezone=UTC (Caused by NameResolutionError("HTTPSConnection(host='api.open-meteo.com', port=443): Failed to resolve 'api.open-meteo.com' ([Errno -3] Temporary failure in name resolution)"))
+2026-07-21 07:32:28 [INFO] weather-oracle-agent: sleeping 300s...
+2026-07-21 07:37:28 [INFO] weather-oracle-agent: --- tick #24 ---
+2026-07-21 07:37:28 [INFO] weather-oracle-agent: === tick started at 2026-07-21T06:37:28.988557+00:00 ===
+2026-07-21 07:37:39 [ERROR] weather-oracle-agent: failed to fetch primary readings: HTTPSConnectionPool(host='api.open-meteo.com', port=443): Max retries exceeded with url: /v1/forecast?latitude=25.7617&longitude=-80.1918&current=temperature_2m%2Cwind_speed_10m%2Cprecipitation&timezone=UTC (Caused by NameResolutionError("HTTPSConnection(host='api.open-meteo.com', port=443): Failed to resolve 'api.open-meteo.com' ([Errno -3] Temporary failure in name resolution)"))
+2026-07-21 07:37:39 [INFO] weather-oracle-agent: sleeping 300s...
+2026-07-21 07:42:39 [INFO] weather-oracle-agent: --- tick #25 ---
+2026-07-21 07:42:39 [INFO] weather-oracle-agent: === tick started at 2026-07-21T06:42:39.006771+00:00 ===
+2026-07-21 07:42:49 [ERROR] weather-oracle-agent: failed to fetch primary readings: HTTPSConnectionPool(host='api.open-meteo.com', port=443): Max retries exceeded with url: /v1/forecast?latitude=25.7617&longitude=-80.1918&current=temperature_2m%2Cwind_speed_10m%2Cprecipitation&timezone=UTC (Caused by NameResolutionError("HTTPSConnection(host='api.open-meteo.com', port=443): Failed to resolve 'api.open-meteo.com' ([Errno -3] Temporary failure in name resolution)"))
+2026-07-21 07:42:49 [INFO] weather-oracle-agent: sleeping 300s...
+2026-07-21 07:47:49 [INFO] weather-oracle-agent: --- tick #26 ---
+2026-07-21 07:47:49 [INFO] weather-oracle-agent: === tick started at 2026-07-21T06:47:49.060184+00:00 ===
+2026-07-21 07:47:59 [ERROR] weather-oracle-agent: failed to fetch primary readings: HTTPSConnectionPool(host='api.open-meteo.com', port=443): Max retries exceeded with url: /v1/forecast?latitude=25.7617&longitude=-80.1918&current=temperature_2m%2Cwind_speed_10m%2Cprecipitation&timezone=UTC (Caused by NameResolutionError("HTTPSConnection(host='api.open-meteo.com', port=443): Failed to resolve 'api.open-meteo.com' ([Errno -3] Temporary failure in name resolution)"))
+2026-07-21 07:47:59 [INFO] weather-oracle-agent: sleeping 300s...
+2026-07-21 07:52:59 [INFO] weather-oracle-agent: --- tick #27 ---
+2026-07-21 07:52:59 [INFO] weather-oracle-agent: === tick started at 2026-07-21T06:52:59.079362+00:00 ===
+2026-07-21 07:53:24 [ERROR] weather-oracle-agent: failed to fetch primary readings: HTTPSConnectionPool(host='api.open-meteo.com', port=443): Max retries exceeded with url: /v1/forecast?latitude=25.7617&longitude=-80.1918&current=temperature_2m%2Cwind_speed_10m%2Cprecipitation&timezone=UTC (Caused by ConnectTimeoutError(<HTTPSConnection(host='api.open-meteo.com', port=443) at 0x743418e6c3e0>, 'Connection to api.open-meteo.com timed out. (connect timeout=15)'))
+2026-07-21 07:53:24 [INFO] weather-oracle-agent: sleeping 300s...
+2026-07-21 07:58:24 [INFO] weather-oracle-agent: --- tick #28 ---
+2026-07-21 07:58:24 [INFO] weather-oracle-agent: === tick started at 2026-07-21T06:58:24.111053+00:00 ===
+2026-07-21 07:58:32 [INFO] weather-oracle-agent.weather: Open-Meteo readings: rain=0.0mm wind=13.9km/h temp=27.5°C
+2026-07-21 07:58:39 [INFO] weather-oracle-agent.chain: submitting reading via CLI: metric=0 value_fp=0 conf=9500 bps
+2026-07-21 07:59:11 [INFO] weather-oracle-agent.chain: transaction confirmed: 789139cee133e9c3b11e8e942aa1f6511d489a04b9f8646f493da4f6053d24d8
+2026-07-21 07:59:12 [INFO] weather-oracle-agent: POSTED rainfall_mm=0.00 (fp=0, confidence=9500 bps) → tx: 789139cee133e9c3b11e8e942aa1f6511d489a04b9f8646f493da4f6053d24d8
+2026-07-21 07:59:14 [ERROR] weatheroracle-agent.gist: Failed to update gist: 404 Client Error: Not Found for url: https://api.github.com/gists/0955aac10d21ab78b31d11b8e2f1db27
+2026-07-21 07:59:15 [INFO] weather-oracle-agent.confidence: metric 1: primary=13.90 secondary=20.00 pct_diff=43.9% → 4000 bps confidence
+2026-07-21 07:59:15 [WARNING] weather-oracle-agent: SKIP wind_speed_kmh=13.90 — confidence 4000 bps below threshold 7000 bps
+2026-07-21 07:59:16 [INFO] weather-oracle-agent.confidence: metric 2: primary=27.50 secondary=28.00 pct_diff=1.8% → 9500 bps confidence
+2026-07-21 07:59:16 [INFO] weather-oracle-agent.chain: submitting reading via CLI: metric=2 value_fp=2750 conf=9500 bps
+2026-07-21 08:01:35 [WARNING] weather-oracle-agent.chain: SSE timeout (ISP blocks streaming). Transaction likely landed — check CSPR.live for confirmation.
+2026-07-21 08:01:35 [ERROR] weather-oracle-agent: FAILED to post temperature_c: SSE timeout — transaction unconfirmed but likely on-chain
+2026-07-21 08:01:35 [INFO] weather-oracle-agent: === tick complete: {'rainfall_mm': {'status': 'posted', 'value': 0.0, 'value_fp': 0, 'confidence_bps': 9500, 'tx_hash': '789139cee133e9c3b11e8e942aa1f6511d489a04b9f8646f493da4f6053d24d8'}, 'wind_speed_kmh': {'status': 'skipped', 'value': 13.9, 'confidence_bps': 4000}, 'temperature_c': {'status': 'failed', 'value': 27.5, 'error': 'SSE timeout — transaction unconfirmed but likely on-chain'}} ===
+2026-07-21 08:01:35 [INFO] weather-oracle-agent: sleeping 300s...
+2026-07-21 08:06:38 [INFO] weather-oracle-agent: --- tick #29 ---
+2026-07-21 08:06:39 [INFO] weather-oracle-agent: === tick started at 2026-07-21T07:06:39.015083+00:00 ===
+2026-07-21 08:06:40 [INFO] weather-oracle-agent.weather: Open-Meteo readings: rain=0.0mm wind=14.7km/h temp=27.4°C
+2026-07-21 08:06:42 [INFO] weather-oracle-agent.chain: submitting reading via CLI: metric=0 value_fp=0 conf=9500 bps
+2026-07-21 08:07:07 [INFO] weather-oracle-agent.chain: transaction confirmed: 294cc02855a1005892852eab62ab4d6262f2a550e92ec13cd32543f4ae12f101
+2026-07-21 08:07:07 [INFO] weather-oracle-agent: POSTED rainfall_mm=0.00 (fp=0, confidence=9500 bps) → tx: 294cc02855a1005892852eab62ab4d6262f2a550e92ec13cd32543f4ae12f101
+2026-07-21 08:07:09 [ERROR] weatheroracle-agent.gist: Failed to update gist: 404 Client Error: Not Found for url: https://api.github.com/gists/0955aac10d21ab78b31d11b8e2f1db27
+2026-07-21 08:07:10 [INFO] weather-oracle-agent.confidence: metric 1: primary=14.70 secondary=20.00 pct_diff=36.1% → 4000 bps confidence
+2026-07-21 08:07:10 [WARNING] weather-oracle-agent: SKIP wind_speed_kmh=14.70 — confidence 4000 bps below threshold 7000 bps
+2026-07-21 08:07:11 [INFO] weather-oracle-agent.confidence: metric 2: primary=27.40 secondary=28.00 pct_diff=2.2% → 9500 bps confidence
+2026-07-21 08:07:11 [INFO] weather-oracle-agent.chain: submitting reading via CLI: metric=2 value_fp=2740 conf=9500 bps
+2026-07-21 08:07:39 [INFO] weather-oracle-agent.chain: transaction confirmed: d9fe7a27da5de7b670610b9b4d3289549d5062a589dfc1b154609c99696d487e
+2026-07-21 08:07:39 [INFO] weather-oracle-agent: POSTED temperature_c=27.40 (fp=2740, confidence=9500 bps) → tx: d9fe7a27da5de7b670610b9b4d3289549d5062a589dfc1b154609c99696d487e
+2026-07-21 08:07:41 [ERROR] weatheroracle-agent.gist: Failed to update gist: 404 Client Error: Not Found for url: https://api.github.com/gists/0955aac10d21ab78b31d11b8e2f1db27
+2026-07-21 08:07:41 [INFO] weather-oracle-agent: === tick complete: {'rainfall_mm': {'status': 'posted', 'value': 0.0, 'value_fp': 0, 'confidence_bps': 9500, 'tx_hash': '294cc02855a1005892852eab62ab4d6262f2a550e92ec13cd32543f4ae12f101'}, 'wind_speed_kmh': {'status': 'skipped', 'value': 14.7, 'confidence_bps': 4000}, 'temperature_c': {'status': 'posted', 'value': 27.4, 'value_fp': 2740, 'confidence_bps': 9500, 'tx_hash': 'd9fe7a27da5de7b670610b9b4d3289549d5062a589dfc1b154609c99696d487e'}} ===
+2026-07-21 08:07:41 [INFO] weather-oracle-agent: sleeping 300s...
+2026-07-21 08:12:47 [INFO] weather-oracle-agent: --- tick #30 ---
+2026-07-21 08:12:47 [INFO] weather-oracle-agent: === tick started at 2026-07-21T07:12:47.489748+00:00 ===
+2026-07-21 08:12:50 [INFO] weather-oracle-agent.weather: Open-Meteo readings: rain=0.0mm wind=14.7km/h temp=27.4°C
+2026-07-21 08:12:53 [INFO] weather-oracle-agent.chain: submitting reading via CLI: metric=0 value_fp=0 conf=9500 bps
+2026-07-21 08:13:31 [INFO] weather-oracle-agent.chain: transaction confirmed: 67c24bec79016008537116ceea41085ea8c12f03811e713403d2eb0d5d0628ef
+2026-07-21 08:13:31 [INFO] weather-oracle-agent: POSTED rainfall_mm=0.00 (fp=0, confidence=9500 bps) → tx: 67c24bec79016008537116ceea41085ea8c12f03811e713403d2eb0d5d0628ef
+2026-07-21 08:13:34 [ERROR] weatheroracle-agent.gist: Failed to update gist: 404 Client Error: Not Found for url: https://api.github.com/gists/0955aac10d21ab78b31d11b8e2f1db27
+2026-07-21 08:13:37 [INFO] weather-oracle-agent.confidence: metric 1: primary=14.70 secondary=20.00 pct_diff=36.1% → 4000 bps confidence
+2026-07-21 08:13:37 [WARNING] weather-oracle-agent: SKIP wind_speed_kmh=14.70 — confidence 4000 bps below threshold 7000 bps
+2026-07-21 08:13:38 [INFO] weather-oracle-agent.confidence: metric 2: primary=27.40 secondary=28.00 pct_diff=2.2% → 9500 bps confidence
+2026-07-21 08:13:38 [INFO] weather-oracle-agent.chain: submitting reading via CLI: metric=2 value_fp=2740 conf=9500 bps
+2026-07-21 08:14:11 [INFO] weather-oracle-agent.chain: transaction confirmed: 443a0f6e0b4022181ef99e7f220ff97daa18a8efdfd409733b30b7de7e41ce0f
+2026-07-21 08:14:11 [INFO] weather-oracle-agent: POSTED temperature_c=27.40 (fp=2740, confidence=9500 bps) → tx: 443a0f6e0b4022181ef99e7f220ff97daa18a8efdfd409733b30b7de7e41ce0f
+2026-07-21 08:14:13 [ERROR] weatheroracle-agent.gist: Failed to update gist: 404 Client Error: Not Found for url: https://api.github.com/gists/0955aac10d21ab78b31d11b8e2f1db27
+2026-07-21 08:14:13 [INFO] weather-oracle-agent: === tick complete: {'rainfall_mm': {'status': 'posted', 'value': 0.0, 'value_fp': 0, 'confidence_bps': 9500, 'tx_hash': '67c24bec79016008537116ceea41085ea8c12f03811e713403d2eb0d5d0628ef'}, 'wind_speed_kmh': {'status': 'skipped', 'value': 14.7, 'confidence_bps': 4000}, 'temperature_c': {'status': 'posted', 'value': 27.4, 'value_fp': 2740, 'confidence_bps': 9500, 'tx_hash': '443a0f6e0b4022181ef99e7f220ff97daa18a8efdfd409733b30b7de7e41ce0f'}} ===
+2026-07-21 08:14:13 [INFO] weather-oracle-agent: sleeping 300s...
+2026-07-21 08:19:35 [INFO] weather-oracle-agent: --- tick #31 ---
+2026-07-21 08:19:35 [INFO] weather-oracle-agent: === tick started at 2026-07-21T07:19:35.054853+00:00 ===
+2026-07-21 08:19:36 [INFO] weather-oracle-agent.weather: Open-Meteo readings: rain=0.0mm wind=14.5km/h temp=27.6°C
+2026-07-21 08:19:37 [INFO] weather-oracle-agent.chain: submitting reading via CLI: metric=0 value_fp=0 conf=9500 bps
+2026-07-21 08:19:55 [INFO] weather-oracle-agent.chain: transaction confirmed: d7cdc059129c420ff8be26672c9c254dda62049ca4d70e0a40e0a854864ab5a4
+2026-07-21 08:19:55 [INFO] weather-oracle-agent: POSTED rainfall_mm=0.00 (fp=0, confidence=9500 bps) → tx: d7cdc059129c420ff8be26672c9c254dda62049ca4d70e0a40e0a854864ab5a4
+2026-07-21 08:19:57 [ERROR] weatheroracle-agent.gist: Failed to update gist: 404 Client Error: Not Found for url: https://api.github.com/gists/0955aac10d21ab78b31d11b8e2f1db27
+2026-07-21 08:19:58 [INFO] weather-oracle-agent.confidence: metric 1: primary=14.50 secondary=20.00 pct_diff=37.9% → 4000 bps confidence
+2026-07-21 08:19:58 [WARNING] weather-oracle-agent: SKIP wind_speed_kmh=14.50 — confidence 4000 bps below threshold 7000 bps
+2026-07-21 08:19:59 [INFO] weather-oracle-agent.confidence: metric 2: primary=27.60 secondary=28.00 pct_diff=1.4% → 9500 bps confidence
+2026-07-21 08:19:59 [INFO] weather-oracle-agent.chain: submitting reading via CLI: metric=2 value_fp=2760 conf=9500 bps
+2026-07-21 08:20:22 [INFO] weather-oracle-agent.chain: transaction confirmed: deab39ba33e3ff990b7ebf3c163b7fe811dace14e6ef240641343c448fe32671
+2026-07-21 08:20:22 [INFO] weather-oracle-agent: POSTED temperature_c=27.60 (fp=2760, confidence=9500 bps) → tx: deab39ba33e3ff990b7ebf3c163b7fe811dace14e6ef240641343c448fe32671
+2026-07-21 08:20:27 [ERROR] weatheroracle-agent.gist: Failed to update gist: 404 Client Error: Not Found for url: https://api.github.com/gists/0955aac10d21ab78b31d11b8e2f1db27
+2026-07-21 08:20:27 [INFO] weather-oracle-agent: === tick complete: {'rainfall_mm': {'status': 'posted', 'value': 0.0, 'value_fp': 0, 'confidence_bps': 9500, 'tx_hash': 'd7cdc059129c420ff8be26672c9c254dda62049ca4d70e0a40e0a854864ab5a4'}, 'wind_speed_kmh': {'status': 'skipped', 'value': 14.5, 'confidence_bps': 4000}, 'temperature_c': {'status': 'posted', 'value': 27.6, 'value_fp': 2760, 'confidence_bps': 9500, 'tx_hash': 'deab39ba33e3ff990b7ebf3c163b7fe811dace14e6ef240641343c448fe32671'}} ===
+2026-07-21 08:20:27 [INFO] weather-oracle-agent: sleeping 300s...
+2026-07-21 08:25:49 [INFO] weather-oracle-agent: --- tick #32 ---
+2026-07-21 08:25:49 [INFO] weather-oracle-agent: === tick started at 2026-07-21T07:25:49.555628+00:00 ===
+2026-07-21 08:25:50 [INFO] weather-oracle-agent.weather: Open-Meteo readings: rain=0.0mm wind=16.2km/h temp=27.8°C
+2026-07-21 08:26:01 [INFO] weather-oracle-agent.chain: submitting reading via CLI: metric=0 value_fp=0 conf=9500 bps
+2026-07-21 08:26:24 [INFO] weather-oracle-agent.chain: transaction confirmed: dc3719d5a937ad3c4f1d96aeaae58d8f74127fc0d602fc111f3fe3f02abdbca4
+2026-07-21 08:26:24 [INFO] weather-oracle-agent: POSTED rainfall_mm=0.00 (fp=0, confidence=9500 bps) → tx: dc3719d5a937ad3c4f1d96aeaae58d8f74127fc0d602fc111f3fe3f02abdbca4
+2026-07-21 08:26:26 [ERROR] weatheroracle-agent.gist: Failed to update gist: 404 Client Error: Not Found for url: https://api.github.com/gists/0955aac10d21ab78b31d11b8e2f1db27
+2026-07-21 08:26:27 [INFO] weather-oracle-agent.confidence: metric 1: primary=16.20 secondary=20.00 pct_diff=23.5% → 4000 bps confidence
+2026-07-21 08:26:27 [WARNING] weather-oracle-agent: SKIP wind_speed_kmh=16.20 — confidence 4000 bps below threshold 7000 bps
+2026-07-21 08:26:32 [INFO] weather-oracle-agent.confidence: metric 2: primary=27.80 secondary=28.00 pct_diff=0.7% → 9500 bps confidence
+2026-07-21 08:26:32 [INFO] weather-oracle-agent.chain: submitting reading via CLI: metric=2 value_fp=2780 conf=9500 bps
+2026-07-21 08:26:59 [INFO] weather-oracle-agent.chain: transaction confirmed: ea769f0a70220bb55e49685463e474b6963690a658e2a7d609569a76d6f441ac
+2026-07-21 08:26:59 [INFO] weather-oracle-agent: POSTED temperature_c=27.80 (fp=2780, confidence=9500 bps) → tx: ea769f0a70220bb55e49685463e474b6963690a658e2a7d609569a76d6f441ac
+2026-07-21 08:27:02 [ERROR] weatheroracle-agent.gist: Failed to update gist: 404 Client Error: Not Found for url: https://api.github.com/gists/0955aac10d21ab78b31d11b8e2f1db27
+2026-07-21 08:27:02 [INFO] weather-oracle-agent: === tick complete: {'rainfall_mm': {'status': 'posted', 'value': 0.0, 'value_fp': 0, 'confidence_bps': 9500, 'tx_hash': 'dc3719d5a937ad3c4f1d96aeaae58d8f74127fc0d602fc111f3fe3f02abdbca4'}, 'wind_speed_kmh': {'status': 'skipped', 'value': 16.2, 'confidence_bps': 4000}, 'temperature_c': {'status': 'posted', 'value': 27.8, 'value_fp': 2780, 'confidence_bps': 9500, 'tx_hash': 'ea769f0a70220bb55e49685463e474b6963690a658e2a7d609569a76d6f441ac'}} ===
+2026-07-21 08:27:02 [INFO] weather-oracle-agent: sleeping 300s...
+2026-07-21 08:32:25 [INFO] weather-oracle-agent: --- tick #33 ---
+2026-07-21 08:32:25 [INFO] weather-oracle-agent: === tick started at 2026-07-21T07:32:25.778014+00:00 ===
+2026-07-21 08:32:26 [INFO] weather-oracle-agent.weather: Open-Meteo readings: rain=0.0mm wind=15.7km/h temp=27.7°C
+2026-07-21 08:32:27 [INFO] weather-oracle-agent.chain: submitting reading via CLI: metric=0 value_fp=0 conf=9500 bps
+2026-07-21 08:32:49 [INFO] weather-oracle-agent.chain: transaction confirmed: 067e780a64d9fc6924d4c232a0a069c6cfc71aa23fae79781b6e799e7778b649
+2026-07-21 08:32:49 [INFO] weather-oracle-agent: POSTED rainfall_mm=0.00 (fp=0, confidence=9500 bps) → tx: 067e780a64d9fc6924d4c232a0a069c6cfc71aa23fae79781b6e799e7778b649
+2026-07-21 08:32:51 [ERROR] weatheroracle-agent.gist: Failed to update gist: 404 Client Error: Not Found for url: https://api.github.com/gists/0955aac10d21ab78b31d11b8e2f1db27
+2026-07-21 08:33:09 [WARNING] weather-oracle-agent.weather: wttr.in fetch failed: HTTPSConnectionPool(host='wttr.in', port=443): Read timed out. (read timeout=15) — will use single-source confidence
+2026-07-21 08:33:09 [WARNING] weather-oracle-agent: SKIP wind_speed_kmh=15.70 — confidence 6500 bps below threshold 7000 bps
+2026-07-21 08:33:24 [WARNING] weather-oracle-agent.weather: wttr.in fetch failed: HTTPSConnectionPool(host='wttr.in', port=443): Max retries exceeded with url: /25.7617,-80.1918?format=j1 (Caused by ConnectTimeoutError(<HTTPSConnection(host='wttr.in', port=443) at 0x743418e6cb00>, 'Connection to wttr.in timed out. (connect timeout=15)')) — will use single-source confidence
+2026-07-21 08:33:24 [WARNING] weather-oracle-agent: SKIP temperature_c=27.70 — confidence 6500 bps below threshold 7000 bps
+2026-07-21 08:33:24 [INFO] weather-oracle-agent: === tick complete: {'rainfall_mm': {'status': 'posted', 'value': 0.0, 'value_fp': 0, 'confidence_bps': 9500, 'tx_hash': '067e780a64d9fc6924d4c232a0a069c6cfc71aa23fae79781b6e799e7778b649'}, 'wind_speed_kmh': {'status': 'skipped', 'value': 15.7, 'confidence_bps': 6500}, 'temperature_c': {'status': 'skipped', 'value': 27.7, 'confidence_bps': 6500}} ===
+2026-07-21 08:33:24 [INFO] weather-oracle-agent: sleeping 300s...
+2026-07-21 08:38:54 [INFO] weather-oracle-agent: --- tick #34 ---
+2026-07-21 08:38:54 [INFO] weather-oracle-agent: === tick started at 2026-07-21T07:38:54.166368+00:00 ===
+2026-07-21 08:38:59 [INFO] weather-oracle-agent.weather: Open-Meteo readings: rain=0.0mm wind=15.7km/h temp=27.7°C
+2026-07-21 08:39:04 [INFO] weather-oracle-agent.chain: submitting reading via CLI: metric=0 value_fp=0 conf=9500 bps
+2026-07-21 08:39:41 [INFO] weather-oracle-agent.chain: transaction confirmed: cb6b2f19cc249dffec466679171dbfcf9cd78810f8210ca21a71cada3baa6e82
+2026-07-21 08:39:41 [INFO] weather-oracle-agent: POSTED rainfall_mm=0.00 (fp=0, confidence=9500 bps) → tx: cb6b2f19cc249dffec466679171dbfcf9cd78810f8210ca21a71cada3baa6e82
+2026-07-21 08:39:43 [ERROR] weatheroracle-agent.gist: Failed to update gist: 404 Client Error: Not Found for url: https://api.github.com/gists/0955aac10d21ab78b31d11b8e2f1db27
+2026-07-21 08:39:44 [INFO] weather-oracle-agent.confidence: metric 1: primary=15.70 secondary=20.00 pct_diff=27.4% → 4000 bps confidence
+2026-07-21 08:39:44 [WARNING] weather-oracle-agent: SKIP wind_speed_kmh=15.70 — confidence 4000 bps below threshold 7000 bps
+2026-07-21 08:39:45 [INFO] weather-oracle-agent.confidence: metric 2: primary=27.70 secondary=28.00 pct_diff=1.1% → 9500 bps confidence
+2026-07-21 08:39:45 [INFO] weather-oracle-agent.chain: submitting reading via CLI: metric=2 value_fp=2770 conf=9500 bps
+2026-07-21 08:40:15 [INFO] weather-oracle-agent.chain: transaction confirmed: 1f4bd60ea93521c9698cfe98cdc1a760f25e146e1ae00b833b8704eb931e7e55
+2026-07-21 08:40:15 [INFO] weather-oracle-agent: POSTED temperature_c=27.70 (fp=2770, confidence=9500 bps) → tx: 1f4bd60ea93521c9698cfe98cdc1a760f25e146e1ae00b833b8704eb931e7e55
+2026-07-21 08:40:17 [ERROR] weatheroracle-agent.gist: Failed to update gist: 404 Client Error: Not Found for url: https://api.github.com/gists/0955aac10d21ab78b31d11b8e2f1db27
+2026-07-21 08:40:17 [INFO] weather-oracle-agent: === tick complete: {'rainfall_mm': {'status': 'posted', 'value': 0.0, 'value_fp': 0, 'confidence_bps': 9500, 'tx_hash': 'cb6b2f19cc249dffec466679171dbfcf9cd78810f8210ca21a71cada3baa6e82'}, 'wind_speed_kmh': {'status': 'skipped', 'value': 15.7, 'confidence_bps': 4000}, 'temperature_c': {'status': 'posted', 'value': 27.7, 'value_fp': 2770, 'confidence_bps': 9500, 'tx_hash': '1f4bd60ea93521c9698cfe98cdc1a760f25e146e1ae00b833b8704eb931e7e55'}} ===
+2026-07-21 08:40:17 [INFO] weather-oracle-agent: sleeping 300s...
+2026-07-21 08:45:37 [INFO] weather-oracle-agent: --- tick #35 ---
+2026-07-21 08:45:37 [INFO] weather-oracle-agent: === tick started at 2026-07-21T07:45:37.700713+00:00 ===
+2026-07-21 08:45:38 [INFO] weather-oracle-agent.weather: Open-Meteo readings: rain=0.0mm wind=15.5km/h temp=27.5°C
+2026-07-21 08:45:40 [INFO] weather-oracle-agent.chain: submitting reading via CLI: metric=0 value_fp=0 conf=9500 bps
+2026-07-21 08:46:01 [INFO] weather-oracle-agent.chain: transaction confirmed: 245917e3de7b8e4b6206316c69650f5e502cb1416b306256f845faa46f8380c6
+2026-07-21 08:46:01 [INFO] weather-oracle-agent: POSTED rainfall_mm=0.00 (fp=0, confidence=9500 bps) → tx: 245917e3de7b8e4b6206316c69650f5e502cb1416b306256f845faa46f8380c6
+2026-07-21 08:46:03 [ERROR] weatheroracle-agent.gist: Failed to update gist: 404 Client Error: Not Found for url: https://api.github.com/gists/0955aac10d21ab78b31d11b8e2f1db27
+2026-07-21 08:46:04 [INFO] weather-oracle-agent.confidence: metric 1: primary=15.50 secondary=20.00 pct_diff=29.0% → 4000 bps confidence
+2026-07-21 08:46:04 [WARNING] weather-oracle-agent: SKIP wind_speed_kmh=15.50 — confidence 4000 bps below threshold 7000 bps
+2026-07-21 08:46:06 [INFO] weather-oracle-agent.confidence: metric 2: primary=27.50 secondary=28.00 pct_diff=1.8% → 9500 bps confidence
+2026-07-21 08:46:06 [INFO] weather-oracle-agent.chain: submitting reading via CLI: metric=2 value_fp=2750 conf=9500 bps
+2026-07-21 08:46:23 [INFO] weather-oracle-agent.chain: transaction confirmed: 89f697b69be368fc348169962dc0d937b860741946bd1c68ca9a64f52ef9c734
+2026-07-21 08:46:23 [INFO] weather-oracle-agent: POSTED temperature_c=27.50 (fp=2750, confidence=9500 bps) → tx: 89f697b69be368fc348169962dc0d937b860741946bd1c68ca9a64f52ef9c734
+2026-07-21 08:46:26 [ERROR] weatheroracle-agent.gist: Failed to update gist: 404 Client Error: Not Found for url: https://api.github.com/gists/0955aac10d21ab78b31d11b8e2f1db27
+2026-07-21 08:46:26 [INFO] weather-oracle-agent: === tick complete: {'rainfall_mm': {'status': 'posted', 'value': 0.0, 'value_fp': 0, 'confidence_bps': 9500, 'tx_hash': '245917e3de7b8e4b6206316c69650f5e502cb1416b306256f845faa46f8380c6'}, 'wind_speed_kmh': {'status': 'skipped', 'value': 15.5, 'confidence_bps': 4000}, 'temperature_c': {'status': 'posted', 'value': 27.5, 'value_fp': 2750, 'confidence_bps': 9500, 'tx_hash': '89f697b69be368fc348169962dc0d937b860741946bd1c68ca9a64f52ef9c734'}} ===
+2026-07-21 08:46:26 [INFO] weather-oracle-agent: sleeping 300s...
+2026-07-21 08:51:51 [INFO] weather-oracle-agent: --- tick #36 ---
+2026-07-21 08:51:51 [INFO] weather-oracle-agent: === tick started at 2026-07-21T07:51:51.149446+00:00 ===
+2026-07-21 08:52:08 [ERROR] weather-oracle-agent: failed to fetch primary readings: HTTPSConnectionPool(host='api.open-meteo.com', port=443): Read timed out. (read timeout=15)
+2026-07-21 08:52:08 [INFO] weather-oracle-agent: sleeping 300s...
+2026-07-21 08:57:17 [INFO] weather-oracle-agent: --- tick #37 ---
+2026-07-21 08:57:17 [INFO] weather-oracle-agent: === tick started at 2026-07-21T07:57:17.544605+00:00 ===
+2026-07-21 08:57:36 [ERROR] weather-oracle-agent: failed to fetch primary readings: HTTPSConnectionPool(host='api.open-meteo.com', port=443): Max retries exceeded with url: /v1/forecast?latitude=25.7617&longitude=-80.1918&current=temperature_2m%2Cwind_speed_10m%2Cprecipitation&timezone=UTC (Caused by ConnectTimeoutError(<HTTPSConnection(host='api.open-meteo.com', port=443) at 0x743418e6c2f0>, 'Connection to api.open-meteo.com timed out. (connect timeout=15)'))
+2026-07-21 08:57:36 [INFO] weather-oracle-agent: sleeping 300s...
+2026-07-21 09:02:49 [INFO] weather-oracle-agent: --- tick #38 ---
+2026-07-21 09:02:49 [INFO] weather-oracle-agent: === tick started at 2026-07-21T08:02:49.911887+00:00 ===
+2026-07-21 09:03:28 [ERROR] weather-oracle-agent: failed to fetch primary readings: HTTPSConnectionPool(host='api.open-meteo.com', port=443): Read timed out. (read timeout=15)
+2026-07-21 09:03:28 [INFO] weather-oracle-agent: sleeping 300s...
+2026-07-21 09:08:51 [INFO] weather-oracle-agent: --- tick #39 ---
+2026-07-21 09:08:51 [INFO] weather-oracle-agent: === tick started at 2026-07-21T08:08:51.665689+00:00 ===
+2026-07-21 09:08:52 [INFO] weather-oracle-agent.weather: Open-Meteo readings: rain=0.0mm wind=15.7km/h temp=27.5°C
+2026-07-21 09:08:53 [INFO] weather-oracle-agent.chain: submitting reading via CLI: metric=0 value_fp=0 conf=9500 bps
+2026-07-21 09:09:28 [INFO] weather-oracle-agent.chain: transaction confirmed: c634a9834712e7b5825a55db6645bd593f629316fe46fd0063914c53c4d5a47a
+2026-07-21 09:09:28 [INFO] weather-oracle-agent: POSTED rainfall_mm=0.00 (fp=0, confidence=9500 bps) → tx: c634a9834712e7b5825a55db6645bd593f629316fe46fd0063914c53c4d5a47a
+2026-07-21 09:09:31 [ERROR] weatheroracle-agent.gist: Failed to update gist: 404 Client Error: Not Found for url: https://api.github.com/gists/0955aac10d21ab78b31d11b8e2f1db27
+2026-07-21 09:09:52 [INFO] weather-oracle-agent.confidence: metric 1: primary=15.70 secondary=20.00 pct_diff=27.4% → 4000 bps confidence
+2026-07-21 09:09:52 [WARNING] weather-oracle-agent: SKIP wind_speed_kmh=15.70 — confidence 4000 bps below threshold 7000 bps
+2026-07-21 09:09:53 [INFO] weather-oracle-agent.confidence: metric 2: primary=27.50 secondary=28.00 pct_diff=1.8% → 9500 bps confidence
+2026-07-21 09:09:53 [INFO] weather-oracle-agent.chain: submitting reading via CLI: metric=2 value_fp=2750 conf=9500 bps
+2026-07-21 09:10:24 [INFO] weather-oracle-agent.chain: transaction confirmed: 0413de58d7836d16dbdd717669d1c878b126cf436e546f9b50bbce9b3621b3f7
+2026-07-21 09:10:24 [INFO] weather-oracle-agent: POSTED temperature_c=27.50 (fp=2750, confidence=9500 bps) → tx: 0413de58d7836d16dbdd717669d1c878b126cf436e546f9b50bbce9b3621b3f7
+2026-07-21 09:10:26 [ERROR] weatheroracle-agent.gist: Failed to update gist: 404 Client Error: Not Found for url: https://api.github.com/gists/0955aac10d21ab78b31d11b8e2f1db27
+2026-07-21 09:10:26 [INFO] weather-oracle-agent: === tick complete: {'rainfall_mm': {'status': 'posted', 'value': 0.0, 'value_fp': 0, 'confidence_bps': 9500, 'tx_hash': 'c634a9834712e7b5825a55db6645bd593f629316fe46fd0063914c53c4d5a47a'}, 'wind_speed_kmh': {'status': 'skipped', 'value': 15.7, 'confidence_bps': 4000}, 'temperature_c': {'status': 'posted', 'value': 27.5, 'value_fp': 2750, 'confidence_bps': 9500, 'tx_hash': '0413de58d7836d16dbdd717669d1c878b126cf436e546f9b50bbce9b3621b3f7'}} ===
+2026-07-21 09:10:26 [INFO] weather-oracle-agent: sleeping 300s...
+2026-07-21 09:15:44 [INFO] weather-oracle-agent: --- tick #40 ---
+2026-07-21 09:15:44 [INFO] weather-oracle-agent: === tick started at 2026-07-21T08:15:44.660237+00:00 ===
+2026-07-21 09:16:01 [INFO] weather-oracle-agent.weather: Open-Meteo readings: rain=0.0mm wind=15.5km/h temp=27.6°C
+2026-07-21 09:16:04 [INFO] weather-oracle-agent.chain: submitting reading via CLI: metric=0 value_fp=0 conf=9500 bps
+2026-07-21 09:16:24 [INFO] weather-oracle-agent.chain: transaction confirmed: 0efb17c8e9306d364abf95b7d5bc9b084f2b7dc274958f6751c21bfeb625b747
+2026-07-21 09:16:24 [INFO] weather-oracle-agent: POSTED rainfall_mm=0.00 (fp=0, confidence=9500 bps) → tx: 0efb17c8e9306d364abf95b7d5bc9b084f2b7dc274958f6751c21bfeb625b747
+2026-07-21 09:16:26 [ERROR] weatheroracle-agent.gist: Failed to update gist: 404 Client Error: Not Found for url: https://api.github.com/gists/0955aac10d21ab78b31d11b8e2f1db27
+2026-07-21 09:16:27 [INFO] weather-oracle-agent.confidence: metric 1: primary=15.50 secondary=20.00 pct_diff=29.0% → 4000 bps confidence
+2026-07-21 09:16:27 [WARNING] weather-oracle-agent: SKIP wind_speed_kmh=15.50 — confidence 4000 bps below threshold 7000 bps
+2026-07-21 09:16:28 [INFO] weather-oracle-agent.confidence: metric 2: primary=27.60 secondary=28.00 pct_diff=1.4% → 9500 bps confidence
+2026-07-21 09:16:28 [INFO] weather-oracle-agent.chain: submitting reading via CLI: metric=2 value_fp=2760 conf=9500 bps
+2026-07-21 09:16:49 [INFO] weather-oracle-agent.chain: transaction confirmed: 94eb6948a5397649b1bef5bfefce8f3e29f11362626956134a84bd298d127e01
+2026-07-21 09:16:49 [INFO] weather-oracle-agent: POSTED temperature_c=27.60 (fp=2760, confidence=9500 bps) → tx: 94eb6948a5397649b1bef5bfefce8f3e29f11362626956134a84bd298d127e01
+2026-07-21 09:16:51 [ERROR] weatheroracle-agent.gist: Failed to update gist: 404 Client Error: Not Found for url: https://api.github.com/gists/0955aac10d21ab78b31d11b8e2f1db27
+2026-07-21 09:16:51 [INFO] weather-oracle-agent: === tick complete: {'rainfall_mm': {'status': 'posted', 'value': 0.0, 'value_fp': 0, 'confidence_bps': 9500, 'tx_hash': '0efb17c8e9306d364abf95b7d5bc9b084f2b7dc274958f6751c21bfeb625b747'}, 'wind_speed_kmh': {'status': 'skipped', 'value': 15.5, 'confidence_bps': 4000}, 'temperature_c': {'status': 'posted', 'value': 27.6, 'value_fp': 2760, 'confidence_bps': 9500, 'tx_hash': '94eb6948a5397649b1bef5bfefce8f3e29f11362626956134a84bd298d127e01'}} ===
+2026-07-21 09:16:51 [INFO] weather-oracle-agent: sleeping 300s...
+2026-07-21 09:22:16 [INFO] weather-oracle-agent: --- tick #41 ---
+2026-07-21 09:22:16 [INFO] weather-oracle-agent: === tick started at 2026-07-21T08:22:16.447399+00:00 ===
+2026-07-21 09:22:17 [INFO] weather-oracle-agent.weather: Open-Meteo readings: rain=0.0mm wind=15.5km/h temp=27.6°C
+2026-07-21 09:22:18 [INFO] weather-oracle-agent.chain: submitting reading via CLI: metric=0 value_fp=0 conf=9500 bps
+2026-07-21 09:22:49 [INFO] weather-oracle-agent.chain: transaction confirmed: 762f1ba5355263633c9bb0d0c0b33d17e864550bb30f42c730509c16df46963f
+2026-07-21 09:22:49 [INFO] weather-oracle-agent: POSTED rainfall_mm=0.00 (fp=0, confidence=9500 bps) → tx: 762f1ba5355263633c9bb0d0c0b33d17e864550bb30f42c730509c16df46963f
+2026-07-21 09:22:51 [ERROR] weatheroracle-agent.gist: Failed to update gist: 404 Client Error: Not Found for url: https://api.github.com/gists/0955aac10d21ab78b31d11b8e2f1db27
+2026-07-21 09:22:53 [INFO] weather-oracle-agent.confidence: metric 1: primary=15.50 secondary=20.00 pct_diff=29.0% → 4000 bps confidence
+2026-07-21 09:22:53 [WARNING] weather-oracle-agent: SKIP wind_speed_kmh=15.50 — confidence 4000 bps below threshold 7000 bps
+2026-07-21 09:22:54 [INFO] weather-oracle-agent.confidence: metric 2: primary=27.60 secondary=28.00 pct_diff=1.4% → 9500 bps confidence
+2026-07-21 09:22:54 [INFO] weather-oracle-agent.chain: submitting reading via CLI: metric=2 value_fp=2760 conf=9500 bps
+2026-07-21 09:23:21 [INFO] weather-oracle-agent.chain: transaction confirmed: 0bfcfeb31bbc5220fa0b62716871964e09e2a398c6129ae8e1b9c91b1dbfa663
+2026-07-21 09:23:21 [INFO] weather-oracle-agent: POSTED temperature_c=27.60 (fp=2760, confidence=9500 bps) → tx: 0bfcfeb31bbc5220fa0b62716871964e09e2a398c6129ae8e1b9c91b1dbfa663
+2026-07-21 09:23:23 [ERROR] weatheroracle-agent.gist: Failed to update gist: 404 Client Error: Not Found for url: https://api.github.com/gists/0955aac10d21ab78b31d11b8e2f1db27
+2026-07-21 09:23:23 [INFO] weather-oracle-agent: === tick complete: {'rainfall_mm': {'status': 'posted', 'value': 0.0, 'value_fp': 0, 'confidence_bps': 9500, 'tx_hash': '762f1ba5355263633c9bb0d0c0b33d17e864550bb30f42c730509c16df46963f'}, 'wind_speed_kmh': {'status': 'skipped', 'value': 15.5, 'confidence_bps': 4000}, 'temperature_c': {'status': 'posted', 'value': 27.6, 'value_fp': 2760, 'confidence_bps': 9500, 'tx_hash': '0bfcfeb31bbc5220fa0b62716871964e09e2a398c6129ae8e1b9c91b1dbfa663'}} ===
+2026-07-21 09:23:23 [INFO] weather-oracle-agent: sleeping 300s...
+2026-07-21 09:28:50 [INFO] weather-oracle-agent: --- tick #42 ---
+2026-07-21 09:28:50 [INFO] weather-oracle-agent: === tick started at 2026-07-21T08:28:50.804888+00:00 ===
+2026-07-21 09:28:52 [INFO] weather-oracle-agent.weather: Open-Meteo readings: rain=0.0mm wind=15.5km/h temp=27.6°C
+2026-07-21 09:28:53 [INFO] weather-oracle-agent.chain: submitting reading via CLI: metric=0 value_fp=0 conf=9500 bps
+2026-07-21 09:29:11 [INFO] weather-oracle-agent.chain: transaction confirmed: 6707956a575359a0bcdbcfbf258bb92838e8f257887429e5e67498f61b230a25
+2026-07-21 09:29:11 [INFO] weather-oracle-agent: POSTED rainfall_mm=0.00 (fp=0, confidence=9500 bps) → tx: 6707956a575359a0bcdbcfbf258bb92838e8f257887429e5e67498f61b230a25
+2026-07-21 09:29:13 [ERROR] weatheroracle-agent.gist: Failed to update gist: 404 Client Error: Not Found for url: https://api.github.com/gists/0955aac10d21ab78b31d11b8e2f1db27
+2026-07-21 09:29:14 [INFO] weather-oracle-agent.confidence: metric 1: primary=15.50 secondary=22.00 pct_diff=41.9% → 4000 bps confidence
+2026-07-21 09:29:14 [WARNING] weather-oracle-agent: SKIP wind_speed_kmh=15.50 — confidence 4000 bps below threshold 7000 bps
+2026-07-21 09:29:15 [INFO] weather-oracle-agent.confidence: metric 2: primary=27.60 secondary=28.00 pct_diff=1.4% → 9500 bps confidence
+2026-07-21 09:29:15 [INFO] weather-oracle-agent.chain: submitting reading via CLI: metric=2 value_fp=2760 conf=9500 bps
+2026-07-21 09:29:36 [INFO] weather-oracle-agent.chain: transaction confirmed: 9f54260945c9ae73642d69eee10c2814c14fa8291fb66862c5e608df9d871fa1
+2026-07-21 09:29:36 [INFO] weather-oracle-agent: POSTED temperature_c=27.60 (fp=2760, confidence=9500 bps) → tx: 9f54260945c9ae73642d69eee10c2814c14fa8291fb66862c5e608df9d871fa1
+2026-07-21 09:29:38 [ERROR] weatheroracle-agent.gist: Failed to update gist: 404 Client Error: Not Found for url: https://api.github.com/gists/0955aac10d21ab78b31d11b8e2f1db27
+2026-07-21 09:29:38 [INFO] weather-oracle-agent: === tick complete: {'rainfall_mm': {'status': 'posted', 'value': 0.0, 'value_fp': 0, 'confidence_bps': 9500, 'tx_hash': '6707956a575359a0bcdbcfbf258bb92838e8f257887429e5e67498f61b230a25'}, 'wind_speed_kmh': {'status': 'skipped', 'value': 15.5, 'confidence_bps': 4000}, 'temperature_c': {'status': 'posted', 'value': 27.6, 'value_fp': 2760, 'confidence_bps': 9500, 'tx_hash': '9f54260945c9ae73642d69eee10c2814c14fa8291fb66862c5e608df9d871fa1'}} ===
+2026-07-21 09:29:38 [INFO] weather-oracle-agent: sleeping 300s...
+2026-07-21 09:35:05 [INFO] weather-oracle-agent: --- tick #43 ---
+2026-07-21 09:35:05 [INFO] weather-oracle-agent: === tick started at 2026-07-21T08:35:05.963007+00:00 ===
+2026-07-21 09:35:06 [INFO] weather-oracle-agent.weather: Open-Meteo readings: rain=0.0mm wind=16.2km/h temp=27.7°C
+2026-07-21 09:35:07 [INFO] weather-oracle-agent.chain: submitting reading via CLI: metric=0 value_fp=0 conf=9500 bps
+2026-07-21 09:35:27 [INFO] weather-oracle-agent.chain: transaction confirmed: f3e4052ca167e4d8ff15648181551207e58e16f5dea89fc78df912390258696b
+2026-07-21 09:35:27 [INFO] weather-oracle-agent: POSTED rainfall_mm=0.00 (fp=0, confidence=9500 bps) → tx: f3e4052ca167e4d8ff15648181551207e58e16f5dea89fc78df912390258696b
+2026-07-21 09:35:32 [ERROR] weatheroracle-agent.gist: Failed to update gist: 404 Client Error: Not Found for url: https://api.github.com/gists/0955aac10d21ab78b31d11b8e2f1db27
+2026-07-21 09:35:33 [INFO] weather-oracle-agent.confidence: metric 1: primary=16.20 secondary=22.00 pct_diff=35.8% → 4000 bps confidence
+2026-07-21 09:35:33 [WARNING] weather-oracle-agent: SKIP wind_speed_kmh=16.20 — confidence 4000 bps below threshold 7000 bps
+2026-07-21 09:35:34 [INFO] weather-oracle-agent.confidence: metric 2: primary=27.70 secondary=28.00 pct_diff=1.1% → 9500 bps confidence
+2026-07-21 09:35:34 [INFO] weather-oracle-agent.chain: submitting reading via CLI: metric=2 value_fp=2770 conf=9500 bps
+2026-07-21 09:35:51 [INFO] weather-oracle-agent.chain: transaction confirmed: deae90bbff2199df2534cebbc2439e04a922ca8d93c5d6747f12c2c496d6a484
+2026-07-21 09:35:51 [INFO] weather-oracle-agent: POSTED temperature_c=27.70 (fp=2770, confidence=9500 bps) → tx: deae90bbff2199df2534cebbc2439e04a922ca8d93c5d6747f12c2c496d6a484
+2026-07-21 09:35:54 [ERROR] weatheroracle-agent.gist: Failed to update gist: 404 Client Error: Not Found for url: https://api.github.com/gists/0955aac10d21ab78b31d11b8e2f1db27
+2026-07-21 09:35:54 [INFO] weather-oracle-agent: === tick complete: {'rainfall_mm': {'status': 'posted', 'value': 0.0, 'value_fp': 0, 'confidence_bps': 9500, 'tx_hash': 'f3e4052ca167e4d8ff15648181551207e58e16f5dea89fc78df912390258696b'}, 'wind_speed_kmh': {'status': 'skipped', 'value': 16.2, 'confidence_bps': 4000}, 'temperature_c': {'status': 'posted', 'value': 27.7, 'value_fp': 2770, 'confidence_bps': 9500, 'tx_hash': 'deae90bbff2199df2534cebbc2439e04a922ca8d93c5d6747f12c2c496d6a484'}} ===
+2026-07-21 09:35:54 [INFO] weather-oracle-agent: sleeping 300s...
+2026-07-21 09:41:23 [INFO] weather-oracle-agent: --- tick #44 ---
+2026-07-21 09:41:23 [INFO] weather-oracle-agent: === tick started at 2026-07-21T08:41:23.564666+00:00 ===
+2026-07-21 09:41:25 [INFO] weather-oracle-agent.weather: Open-Meteo readings: rain=0.0mm wind=16.2km/h temp=27.7°C
+2026-07-21 09:41:26 [INFO] weather-oracle-agent.chain: submitting reading via CLI: metric=0 value_fp=0 conf=9500 bps
+2026-07-21 09:41:43 [INFO] weather-oracle-agent.chain: transaction confirmed: 6aa89be8c5a6a3e7f77e9e06665ced9aa600539a4f804e784167753f59e6722e
+2026-07-21 09:41:43 [INFO] weather-oracle-agent: POSTED rainfall_mm=0.00 (fp=0, confidence=9500 bps) → tx: 6aa89be8c5a6a3e7f77e9e06665ced9aa600539a4f804e784167753f59e6722e
+2026-07-21 09:41:45 [ERROR] weatheroracle-agent.gist: Failed to update gist: 404 Client Error: Not Found for url: https://api.github.com/gists/0955aac10d21ab78b31d11b8e2f1db27
+2026-07-21 09:41:46 [INFO] weather-oracle-agent.confidence: metric 1: primary=16.20 secondary=22.00 pct_diff=35.8% → 4000 bps confidence
+2026-07-21 09:41:46 [WARNING] weather-oracle-agent: SKIP wind_speed_kmh=16.20 — confidence 4000 bps below threshold 7000 bps
+2026-07-21 09:41:47 [INFO] weather-oracle-agent.confidence: metric 2: primary=27.70 secondary=28.00 pct_diff=1.1% → 9500 bps confidence
+2026-07-21 09:41:47 [INFO] weather-oracle-agent.chain: submitting reading via CLI: metric=2 value_fp=2770 conf=9500 bps
+2026-07-21 09:42:09 [INFO] weather-oracle-agent.chain: transaction confirmed: fd0bf78f3e41821335dad34a280662cd6211f9e547ddb2e1c5cbd3cad925314c
+2026-07-21 09:42:09 [INFO] weather-oracle-agent: POSTED temperature_c=27.70 (fp=2770, confidence=9500 bps) → tx: fd0bf78f3e41821335dad34a280662cd6211f9e547ddb2e1c5cbd3cad925314c
+2026-07-21 09:42:10 [ERROR] weatheroracle-agent.gist: Failed to update gist: 404 Client Error: Not Found for url: https://api.github.com/gists/0955aac10d21ab78b31d11b8e2f1db27
+2026-07-21 09:42:10 [INFO] weather-oracle-agent: === tick complete: {'rainfall_mm': {'status': 'posted', 'value': 0.0, 'value_fp': 0, 'confidence_bps': 9500, 'tx_hash': '6aa89be8c5a6a3e7f77e9e06665ced9aa600539a4f804e784167753f59e6722e'}, 'wind_speed_kmh': {'status': 'skipped', 'value': 16.2, 'confidence_bps': 4000}, 'temperature_c': {'status': 'posted', 'value': 27.7, 'value_fp': 2770, 'confidence_bps': 9500, 'tx_hash': 'fd0bf78f3e41821335dad34a280662cd6211f9e547ddb2e1c5cbd3cad925314c'}} ===
+2026-07-21 09:42:11 [INFO] weather-oracle-agent: sleeping 300s...
+2026-07-21 09:47:37 [INFO] weather-oracle-agent: --- tick #45 ---
+2026-07-21 09:47:37 [INFO] weather-oracle-agent: === tick started at 2026-07-21T08:47:37.410948+00:00 ===
+2026-07-21 09:47:38 [INFO] weather-oracle-agent.weather: Open-Meteo readings: rain=0.0mm wind=16.0km/h temp=27.7°C
+2026-07-21 09:47:40 [INFO] weather-oracle-agent.chain: submitting reading via CLI: metric=0 value_fp=0 conf=9500 bps
+2026-07-21 09:48:01 [INFO] weather-oracle-agent.chain: transaction confirmed: d440d7435337e354a7172dd1815fc579d4cd524c4bcbe85838b30a2063135ed8
+2026-07-21 09:48:01 [INFO] weather-oracle-agent: POSTED rainfall_mm=0.00 (fp=0, confidence=9500 bps) → tx: d440d7435337e354a7172dd1815fc579d4cd524c4bcbe85838b30a2063135ed8
+2026-07-21 09:48:03 [ERROR] weatheroracle-agent.gist: Failed to update gist: 404 Client Error: Not Found for url: https://api.github.com/gists/0955aac10d21ab78b31d11b8e2f1db27
+2026-07-21 09:48:04 [INFO] weather-oracle-agent.confidence: metric 1: primary=16.00 secondary=22.00 pct_diff=37.5% → 4000 bps confidence
+2026-07-21 09:48:04 [WARNING] weather-oracle-agent: SKIP wind_speed_kmh=16.00 — confidence 4000 bps below threshold 7000 bps
+2026-07-21 09:48:05 [INFO] weather-oracle-agent.confidence: metric 2: primary=27.70 secondary=28.00 pct_diff=1.1% → 9500 bps confidence
+2026-07-21 09:48:05 [INFO] weather-oracle-agent.chain: submitting reading via CLI: metric=2 value_fp=2770 conf=9500 bps
+2026-07-21 09:48:26 [INFO] weather-oracle-agent.chain: transaction confirmed: 3d5a6d4ada0b66c8b8125259115e04f82b0c97695aac9906d072a1776087730e
+2026-07-21 09:48:26 [INFO] weather-oracle-agent: POSTED temperature_c=27.70 (fp=2770, confidence=9500 bps) → tx: 3d5a6d4ada0b66c8b8125259115e04f82b0c97695aac9906d072a1776087730e
+2026-07-21 09:48:27 [ERROR] weatheroracle-agent.gist: Failed to update gist: 404 Client Error: Not Found for url: https://api.github.com/gists/0955aac10d21ab78b31d11b8e2f1db27
+2026-07-21 09:48:27 [INFO] weather-oracle-agent: === tick complete: {'rainfall_mm': {'status': 'posted', 'value': 0.0, 'value_fp': 0, 'confidence_bps': 9500, 'tx_hash': 'd440d7435337e354a7172dd1815fc579d4cd524c4bcbe85838b30a2063135ed8'}, 'wind_speed_kmh': {'status': 'skipped', 'value': 16.0, 'confidence_bps': 4000}, 'temperature_c': {'status': 'posted', 'value': 27.7, 'value_fp': 2770, 'confidence_bps': 9500, 'tx_hash': '3d5a6d4ada0b66c8b8125259115e04f82b0c97695aac9906d072a1776087730e'}} ===
+2026-07-21 09:48:27 [INFO] weather-oracle-agent: sleeping 300s...
+2026-07-21 09:53:54 [INFO] weather-oracle-agent: --- tick #46 ---
+2026-07-21 09:53:54 [INFO] weather-oracle-agent: === tick started at 2026-07-21T08:53:54.257551+00:00 ===
+2026-07-21 09:53:55 [INFO] weather-oracle-agent.weather: Open-Meteo readings: rain=0.0mm wind=16.0km/h temp=27.7°C
+2026-07-21 09:53:56 [INFO] weather-oracle-agent.chain: submitting reading via CLI: metric=0 value_fp=0 conf=9500 bps
+2026-07-21 09:54:18 [INFO] weather-oracle-agent.chain: transaction confirmed: 8bf1ecb72cc3e5e95666aaa4de9e4fe936255449d066a3dbae1cb6b6dd9f7678
+2026-07-21 09:54:18 [INFO] weather-oracle-agent: POSTED rainfall_mm=0.00 (fp=0, confidence=9500 bps) → tx: 8bf1ecb72cc3e5e95666aaa4de9e4fe936255449d066a3dbae1cb6b6dd9f7678
+2026-07-21 09:54:19 [ERROR] weatheroracle-agent.gist: Failed to update gist: 404 Client Error: Not Found for url: https://api.github.com/gists/0955aac10d21ab78b31d11b8e2f1db27
+2026-07-21 09:54:20 [INFO] weather-oracle-agent.confidence: metric 1: primary=16.00 secondary=22.00 pct_diff=37.5% → 4000 bps confidence
+2026-07-21 09:54:20 [WARNING] weather-oracle-agent: SKIP wind_speed_kmh=16.00 — confidence 4000 bps below threshold 7000 bps
+2026-07-21 09:54:21 [INFO] weather-oracle-agent.confidence: metric 2: primary=27.70 secondary=28.00 pct_diff=1.1% → 9500 bps confidence
+2026-07-21 09:54:21 [INFO] weather-oracle-agent.chain: submitting reading via CLI: metric=2 value_fp=2770 conf=9500 bps
+2026-07-21 09:54:41 [INFO] weather-oracle-agent.chain: transaction confirmed: de16d87204f3d778179fd31b9512e11ff9381f13a53c58a0d95b581be94ba522
+2026-07-21 09:54:41 [INFO] weather-oracle-agent: POSTED temperature_c=27.70 (fp=2770, confidence=9500 bps) → tx: de16d87204f3d778179fd31b9512e11ff9381f13a53c58a0d95b581be94ba522
+2026-07-21 09:54:43 [ERROR] weatheroracle-agent.gist: Failed to update gist: 404 Client Error: Not Found for url: https://api.github.com/gists/0955aac10d21ab78b31d11b8e2f1db27
+2026-07-21 09:54:43 [INFO] weather-oracle-agent: === tick complete: {'rainfall_mm': {'status': 'posted', 'value': 0.0, 'value_fp': 0, 'confidence_bps': 9500, 'tx_hash': '8bf1ecb72cc3e5e95666aaa4de9e4fe936255449d066a3dbae1cb6b6dd9f7678'}, 'wind_speed_kmh': {'status': 'skipped', 'value': 16.0, 'confidence_bps': 4000}, 'temperature_c': {'status': 'posted', 'value': 27.7, 'value_fp': 2770, 'confidence_bps': 9500, 'tx_hash': 'de16d87204f3d778179fd31b9512e11ff9381f13a53c58a0d95b581be94ba522'}} ===
+2026-07-21 09:54:43 [INFO] weather-oracle-agent: sleeping 300s...
+2026-07-21 10:00:06 [INFO] weather-oracle-agent: --- tick #47 ---
+2026-07-21 10:00:06 [INFO] weather-oracle-agent: === tick started at 2026-07-21T09:00:06.532762+00:00 ===
+2026-07-21 10:00:08 [INFO] weather-oracle-agent.weather: Open-Meteo readings: rain=0.0mm wind=16.3km/h temp=27.8°C
+2026-07-21 10:00:09 [INFO] weather-oracle-agent.chain: submitting reading via CLI: metric=0 value_fp=0 conf=9500 bps
+2026-07-21 10:00:32 [INFO] weather-oracle-agent.chain: transaction confirmed: 0a2a3a3d46301b8c2bd7fe84bc2d190f494c48d0e9dcf4a7818f45517270d21e
+2026-07-21 10:00:32 [INFO] weather-oracle-agent: POSTED rainfall_mm=0.00 (fp=0, confidence=9500 bps) → tx: 0a2a3a3d46301b8c2bd7fe84bc2d190f494c48d0e9dcf4a7818f45517270d21e
+2026-07-21 10:00:34 [ERROR] weatheroracle-agent.gist: Failed to update gist: 404 Client Error: Not Found for url: https://api.github.com/gists/0955aac10d21ab78b31d11b8e2f1db27
+2026-07-21 10:00:46 [INFO] weather-oracle-agent.confidence: metric 1: primary=16.30 secondary=22.00 pct_diff=35.0% → 4000 bps confidence
+2026-07-21 10:00:46 [WARNING] weather-oracle-agent: SKIP wind_speed_kmh=16.30 — confidence 4000 bps below threshold 7000 bps
+2026-07-21 10:01:11 [WARNING] weather-oracle-agent.weather: wttr.in fetch failed: HTTPSConnectionPool(host='wttr.in', port=443): Read timed out. (read timeout=15) — will use single-source confidence
+2026-07-21 10:01:11 [WARNING] weather-oracle-agent: SKIP temperature_c=27.80 — confidence 6500 bps below threshold 7000 bps
+2026-07-21 10:01:11 [INFO] weather-oracle-agent: === tick complete: {'rainfall_mm': {'status': 'posted', 'value': 0.0, 'value_fp': 0, 'confidence_bps': 9500, 'tx_hash': '0a2a3a3d46301b8c2bd7fe84bc2d190f494c48d0e9dcf4a7818f45517270d21e'}, 'wind_speed_kmh': {'status': 'skipped', 'value': 16.3, 'confidence_bps': 4000}, 'temperature_c': {'status': 'skipped', 'value': 27.8, 'confidence_bps': 6500}} ===
+2026-07-21 10:01:11 [INFO] weather-oracle-agent: sleeping 300s...
+2026-07-21 10:24:47 [INFO] weather-oracle-agent: --- tick #48 ---
+2026-07-21 10:24:47 [INFO] weather-oracle-agent: === tick started at 2026-07-21T09:24:47.741312+00:00 ===
+2026-07-21 10:24:57 [ERROR] weather-oracle-agent: failed to fetch primary readings: HTTPSConnectionPool(host='api.open-meteo.com', port=443): Max retries exceeded with url: /v1/forecast?latitude=25.7617&longitude=-80.1918&current=temperature_2m%2Cwind_speed_10m%2Cprecipitation&timezone=UTC (Caused by NameResolutionError("HTTPSConnection(host='api.open-meteo.com', port=443): Failed to resolve 'api.open-meteo.com' ([Errno -3] Temporary failure in name resolution)"))
+2026-07-21 10:24:57 [INFO] weather-oracle-agent: sleeping 300s...
+2026-07-21 10:29:57 [INFO] weather-oracle-agent: --- tick #49 ---
+2026-07-21 10:29:57 [INFO] weather-oracle-agent: === tick started at 2026-07-21T09:29:57.813782+00:00 ===
+2026-07-21 10:30:07 [ERROR] weather-oracle-agent: failed to fetch primary readings: HTTPSConnectionPool(host='api.open-meteo.com', port=443): Max retries exceeded with url: /v1/forecast?latitude=25.7617&longitude=-80.1918&current=temperature_2m%2Cwind_speed_10m%2Cprecipitation&timezone=UTC (Caused by NameResolutionError("HTTPSConnection(host='api.open-meteo.com', port=443): Failed to resolve 'api.open-meteo.com' ([Errno -3] Temporary failure in name resolution)"))
+2026-07-21 10:30:08 [INFO] weather-oracle-agent: sleeping 300s...
+2026-07-21 10:35:08 [INFO] weather-oracle-agent: --- tick #50 ---
+2026-07-21 10:35:08 [INFO] weather-oracle-agent: === tick started at 2026-07-21T09:35:08.111381+00:00 ===
+2026-07-21 10:35:18 [ERROR] weather-oracle-agent: failed to fetch primary readings: HTTPSConnectionPool(host='api.open-meteo.com', port=443): Max retries exceeded with url: /v1/forecast?latitude=25.7617&longitude=-80.1918&current=temperature_2m%2Cwind_speed_10m%2Cprecipitation&timezone=UTC (Caused by NameResolutionError("HTTPSConnection(host='api.open-meteo.com', port=443): Failed to resolve 'api.open-meteo.com' ([Errno -3] Temporary failure in name resolution)"))
+2026-07-21 10:35:18 [INFO] weather-oracle-agent: sleeping 300s...
+2026-07-21 10:40:18 [INFO] weather-oracle-agent: --- tick #51 ---
+2026-07-21 10:40:18 [INFO] weather-oracle-agent: === tick started at 2026-07-21T09:40:18.199936+00:00 ===
+2026-07-21 10:40:28 [ERROR] weather-oracle-agent: failed to fetch primary readings: HTTPSConnectionPool(host='api.open-meteo.com', port=443): Max retries exceeded with url: /v1/forecast?latitude=25.7617&longitude=-80.1918&current=temperature_2m%2Cwind_speed_10m%2Cprecipitation&timezone=UTC (Caused by NameResolutionError("HTTPSConnection(host='api.open-meteo.com', port=443): Failed to resolve 'api.open-meteo.com' ([Errno -3] Temporary failure in name resolution)"))
+2026-07-21 10:40:28 [INFO] weather-oracle-agent: sleeping 300s...
+2026-07-21 10:45:28 [INFO] weather-oracle-agent: --- tick #52 ---
+2026-07-21 10:45:28 [INFO] weather-oracle-agent: === tick started at 2026-07-21T09:45:28.262457+00:00 ===
+2026-07-21 10:45:30 [INFO] weather-oracle-agent.weather: Open-Meteo readings: rain=0.0mm wind=16.7km/h temp=27.8°C
+2026-07-21 10:45:40 [INFO] weather-oracle-agent.chain: submitting reading via CLI: metric=0 value_fp=0 conf=9500 bps
+2026-07-21 10:48:40 [WARNING] weather-oracle-agent.chain: SSE timeout (ISP blocks streaming). Transaction likely landed — check CSPR.live for confirmation.
+2026-07-21 10:48:40 [ERROR] weather-oracle-agent: FAILED to post rainfall_mm: SSE timeout — transaction unconfirmed but likely on-chain
+2026-07-21 10:48:41 [INFO] weather-oracle-agent.confidence: metric 1: primary=16.70 secondary=22.00 pct_diff=31.7% → 4000 bps confidence
+2026-07-21 10:48:41 [WARNING] weather-oracle-agent: SKIP wind_speed_kmh=16.70 — confidence 4000 bps below threshold 7000 bps
+2026-07-21 10:48:42 [INFO] weather-oracle-agent.confidence: metric 2: primary=27.80 secondary=28.00 pct_diff=0.7% → 9500 bps confidence
+2026-07-21 10:48:42 [INFO] weather-oracle-agent.chain: submitting reading via CLI: metric=2 value_fp=2780 conf=9500 bps
+2026-07-21 10:49:34 [INFO] weather-oracle-agent.chain: transaction confirmed: 3d4e9837d36a8e0518d353dea56fb83ee3a4b8b7c0b7be5a4c0b078787be4cd8
+2026-07-21 10:49:34 [INFO] weather-oracle-agent: POSTED temperature_c=27.80 (fp=2780, confidence=9500 bps) → tx: 3d4e9837d36a8e0518d353dea56fb83ee3a4b8b7c0b7be5a4c0b078787be4cd8
+2026-07-21 10:49:36 [ERROR] weatheroracle-agent.gist: Failed to update gist: 404 Client Error: Not Found for url: https://api.github.com/gists/0955aac10d21ab78b31d11b8e2f1db27
+2026-07-21 10:49:36 [INFO] weather-oracle-agent: === tick complete: {'rainfall_mm': {'status': 'failed', 'value': 0.0, 'error': 'SSE timeout — transaction unconfirmed but likely on-chain'}, 'wind_speed_kmh': {'status': 'skipped', 'value': 16.7, 'confidence_bps': 4000}, 'temperature_c': {'status': 'posted', 'value': 27.8, 'value_fp': 2780, 'confidence_bps': 9500, 'tx_hash': '3d4e9837d36a8e0518d353dea56fb83ee3a4b8b7c0b7be5a4c0b078787be4cd8'}} ===
+2026-07-21 10:49:36 [INFO] weather-oracle-agent: sleeping 300s...
+2026-07-21 10:54:36 [INFO] weather-oracle-agent: --- tick #53 ---
+2026-07-21 10:54:36 [INFO] weather-oracle-agent: === tick started at 2026-07-21T09:54:36.308116+00:00 ===
+2026-07-21 10:54:37 [INFO] weather-oracle-agent.weather: Open-Meteo readings: rain=0.0mm wind=16.7km/h temp=27.8°C
+2026-07-21 10:54:38 [INFO] weather-oracle-agent.chain: submitting reading via CLI: metric=0 value_fp=0 conf=9500 bps
+2026-07-21 10:55:47 [INFO] weather-oracle-agent.chain: transaction confirmed: 699867675cea893a613ef9bbca157c90bd42d120d265665fdf440d51c4efe176
+2026-07-21 10:55:47 [INFO] weather-oracle-agent: POSTED rainfall_mm=0.00 (fp=0, confidence=9500 bps) → tx: 699867675cea893a613ef9bbca157c90bd42d120d265665fdf440d51c4efe176
+2026-07-21 10:55:48 [ERROR] weatheroracle-agent.gist: Failed to update gist: 404 Client Error: Not Found for url: https://api.github.com/gists/0955aac10d21ab78b31d11b8e2f1db27
+2026-07-21 10:55:49 [INFO] weather-oracle-agent.confidence: metric 1: primary=16.70 secondary=22.00 pct_diff=31.7% → 4000 bps confidence
+2026-07-21 10:55:49 [WARNING] weather-oracle-agent: SKIP wind_speed_kmh=16.70 — confidence 4000 bps below threshold 7000 bps
+2026-07-21 10:55:50 [INFO] weather-oracle-agent.confidence: metric 2: primary=27.80 secondary=28.00 pct_diff=0.7% → 9500 bps confidence
+2026-07-21 10:55:50 [INFO] weather-oracle-agent.chain: submitting reading via CLI: metric=2 value_fp=2780 conf=9500 bps
+2026-07-21 10:56:43 [INFO] weather-oracle-agent.chain: transaction confirmed: 3a08effc35deb8132ee1dc4b2b5218fd5a5e06fece18232cb0fc81bd0787ea44
+2026-07-21 10:56:43 [INFO] weather-oracle-agent: POSTED temperature_c=27.80 (fp=2780, confidence=9500 bps) → tx: 3a08effc35deb8132ee1dc4b2b5218fd5a5e06fece18232cb0fc81bd0787ea44
+2026-07-21 10:56:45 [ERROR] weatheroracle-agent.gist: Failed to update gist: 404 Client Error: Not Found for url: https://api.github.com/gists/0955aac10d21ab78b31d11b8e2f1db27
+2026-07-21 10:56:45 [INFO] weather-oracle-agent: === tick complete: {'rainfall_mm': {'status': 'posted', 'value': 0.0, 'value_fp': 0, 'confidence_bps': 9500, 'tx_hash': '699867675cea893a613ef9bbca157c90bd42d120d265665fdf440d51c4efe176'}, 'wind_speed_kmh': {'status': 'skipped', 'value': 16.7, 'confidence_bps': 4000}, 'temperature_c': {'status': 'posted', 'value': 27.8, 'value_fp': 2780, 'confidence_bps': 9500, 'tx_hash': '3a08effc35deb8132ee1dc4b2b5218fd5a5e06fece18232cb0fc81bd0787ea44'}} ===
+2026-07-21 10:56:45 [INFO] weather-oracle-agent: sleeping 300s...
+2026-07-21 11:02:10 [INFO] weather-oracle-agent: --- tick #54 ---
+2026-07-21 11:02:10 [INFO] weather-oracle-agent: === tick started at 2026-07-21T10:02:10.147560+00:00 ===
+2026-07-21 11:02:11 [INFO] weather-oracle-agent.weather: Open-Meteo readings: rain=0.0mm wind=16.2km/h temp=27.7°C
+2026-07-21 11:02:31 [WARNING] weather-oracle-agent.weather: wttr.in fetch failed: HTTPSConnectionPool(host='wttr.in', port=443): Read timed out. (read timeout=15) — will use single-source confidence
+2026-07-21 11:02:31 [WARNING] weather-oracle-agent: SKIP rainfall_mm=0.00 — confidence 6500 bps below threshold 7000 bps
+2026-07-21 11:02:48 [WARNING] weather-oracle-agent.weather: wttr.in fetch failed: HTTPSConnectionPool(host='wttr.in', port=443): Read timed out. (read timeout=15) — will use single-source confidence
+2026-07-21 11:02:48 [WARNING] weather-oracle-agent: SKIP wind_speed_kmh=16.20 — confidence 6500 bps below threshold 7000 bps
+2026-07-21 11:03:07 [WARNING] weather-oracle-agent.weather: wttr.in fetch failed: HTTPSConnectionPool(host='wttr.in', port=443): Read timed out. (read timeout=15) — will use single-source confidence
+2026-07-21 11:03:07 [WARNING] weather-oracle-agent: SKIP temperature_c=27.70 — confidence 6500 bps below threshold 7000 bps
+2026-07-21 11:03:07 [INFO] weather-oracle-agent: === tick complete: {'rainfall_mm': {'status': 'skipped', 'value': 0.0, 'confidence_bps': 6500}, 'wind_speed_kmh': {'status': 'skipped', 'value': 16.2, 'confidence_bps': 6500}, 'temperature_c': {'status': 'skipped', 'value': 27.7, 'confidence_bps': 6500}} ===
+2026-07-21 11:03:07 [INFO] weather-oracle-agent: sleeping 300s...
+2026-07-21 11:08:33 [INFO] weather-oracle-agent: --- tick #55 ---
+2026-07-21 11:08:33 [INFO] weather-oracle-agent: === tick started at 2026-07-21T10:08:33.965152+00:00 ===
+2026-07-21 11:08:35 [INFO] weather-oracle-agent.weather: Open-Meteo readings: rain=0.0mm wind=16.2km/h temp=27.7°C
+2026-07-21 11:08:37 [INFO] weather-oracle-agent.chain: submitting reading via CLI: metric=0 value_fp=0 conf=9500 bps
+2026-07-21 11:09:46 [INFO] weather-oracle-agent.chain: transaction confirmed: e546ccac9cbc55a35810cecd13cb0a4d49bc8a89ffb9b4c6fd6cf00f39079d07
+2026-07-21 11:09:46 [INFO] weather-oracle-agent: POSTED rainfall_mm=0.00 (fp=0, confidence=9500 bps) → tx: e546ccac9cbc55a35810cecd13cb0a4d49bc8a89ffb9b4c6fd6cf00f39079d07
+2026-07-21 11:09:47 [ERROR] weatheroracle-agent.gist: Failed to update gist: 404 Client Error: Not Found for url: https://api.github.com/gists/0955aac10d21ab78b31d11b8e2f1db27
+2026-07-21 11:09:50 [INFO] weather-oracle-agent.confidence: metric 1: primary=16.20 secondary=22.00 pct_diff=35.8% → 4000 bps confidence
+2026-07-21 11:09:50 [WARNING] weather-oracle-agent: SKIP wind_speed_kmh=16.20 — confidence 4000 bps below threshold 7000 bps
+2026-07-21 11:09:55 [INFO] weather-oracle-agent.confidence: metric 2: primary=27.70 secondary=29.00 pct_diff=4.7% → 9500 bps confidence
+2026-07-21 11:09:55 [INFO] weather-oracle-agent.chain: submitting reading via CLI: metric=2 value_fp=2770 conf=9500 bps
+2026-07-21 11:10:50 [INFO] weather-oracle-agent.chain: transaction confirmed: 876666e4447bc9632cd05b130d5fbfdb9b29cd8ffeb5d3047e553e8fb03a8f43
+2026-07-21 11:10:50 [INFO] weather-oracle-agent: POSTED temperature_c=27.70 (fp=2770, confidence=9500 bps) → tx: 876666e4447bc9632cd05b130d5fbfdb9b29cd8ffeb5d3047e553e8fb03a8f43
+2026-07-21 11:10:52 [ERROR] weatheroracle-agent.gist: Failed to update gist: 404 Client Error: Not Found for url: https://api.github.com/gists/0955aac10d21ab78b31d11b8e2f1db27
+2026-07-21 11:10:52 [INFO] weather-oracle-agent: === tick complete: {'rainfall_mm': {'status': 'posted', 'value': 0.0, 'value_fp': 0, 'confidence_bps': 9500, 'tx_hash': 'e546ccac9cbc55a35810cecd13cb0a4d49bc8a89ffb9b4c6fd6cf00f39079d07'}, 'wind_speed_kmh': {'status': 'skipped', 'value': 16.2, 'confidence_bps': 4000}, 'temperature_c': {'status': 'posted', 'value': 27.7, 'value_fp': 2770, 'confidence_bps': 9500, 'tx_hash': '876666e4447bc9632cd05b130d5fbfdb9b29cd8ffeb5d3047e553e8fb03a8f43'}} ===
+2026-07-21 11:10:52 [INFO] weather-oracle-agent: sleeping 300s...
+2026-07-21 11:16:18 [INFO] weather-oracle-agent: --- tick #56 ---
+2026-07-21 11:16:18 [INFO] weather-oracle-agent: === tick started at 2026-07-21T10:16:18.552301+00:00 ===
+2026-07-21 11:16:19 [INFO] weather-oracle-agent.weather: Open-Meteo readings: rain=0.0mm wind=16.3km/h temp=27.6°C
+2026-07-21 11:16:20 [INFO] weather-oracle-agent.chain: submitting reading via CLI: metric=0 value_fp=0 conf=9500 bps
+2026-07-21 11:17:47 [INFO] weather-oracle-agent.chain: transaction confirmed: be5988de103f6e59348f4b22f44f2ccbd534b696102a47c05fe96be8f54ca144
+2026-07-21 11:17:47 [INFO] weather-oracle-agent: POSTED rainfall_mm=0.00 (fp=0, confidence=9500 bps) → tx: be5988de103f6e59348f4b22f44f2ccbd534b696102a47c05fe96be8f54ca144
+2026-07-21 11:17:48 [ERROR] weatheroracle-agent.gist: Failed to update gist: 404 Client Error: Not Found for url: https://api.github.com/gists/0955aac10d21ab78b31d11b8e2f1db27
+2026-07-21 11:17:49 [INFO] weather-oracle-agent.confidence: metric 1: primary=16.30 secondary=22.00 pct_diff=35.0% → 4000 bps confidence
+2026-07-21 11:17:49 [WARNING] weather-oracle-agent: SKIP wind_speed_kmh=16.30 — confidence 4000 bps below threshold 7000 bps
+2026-07-21 11:17:50 [INFO] weather-oracle-agent.confidence: metric 2: primary=27.60 secondary=29.00 pct_diff=5.1% → 8000 bps confidence
+2026-07-21 11:17:50 [INFO] weather-oracle-agent.chain: submitting reading via CLI: metric=2 value_fp=2760 conf=8000 bps
+2026-07-21 11:18:44 [INFO] weather-oracle-agent.chain: transaction confirmed: f715d21308fb5a28eb9608a827d8fe0e98c2ea37bcbd155482e9deb22a9f5234
+2026-07-21 11:18:44 [INFO] weather-oracle-agent: POSTED temperature_c=27.60 (fp=2760, confidence=8000 bps) → tx: f715d21308fb5a28eb9608a827d8fe0e98c2ea37bcbd155482e9deb22a9f5234
+2026-07-21 11:18:49 [ERROR] weatheroracle-agent.gist: Failed to update gist: 404 Client Error: Not Found for url: https://api.github.com/gists/0955aac10d21ab78b31d11b8e2f1db27
+2026-07-21 11:18:49 [INFO] weather-oracle-agent: === tick complete: {'rainfall_mm': {'status': 'posted', 'value': 0.0, 'value_fp': 0, 'confidence_bps': 9500, 'tx_hash': 'be5988de103f6e59348f4b22f44f2ccbd534b696102a47c05fe96be8f54ca144'}, 'wind_speed_kmh': {'status': 'skipped', 'value': 16.3, 'confidence_bps': 4000}, 'temperature_c': {'status': 'posted', 'value': 27.6, 'value_fp': 2760, 'confidence_bps': 8000, 'tx_hash': 'f715d21308fb5a28eb9608a827d8fe0e98c2ea37bcbd155482e9deb22a9f5234'}} ===
+2026-07-21 11:18:49 [INFO] weather-oracle-agent: sleeping 300s...
+2026-07-21 11:24:15 [INFO] weather-oracle-agent: --- tick #57 ---
+2026-07-21 11:24:15 [INFO] weather-oracle-agent: === tick started at 2026-07-21T10:24:15.804637+00:00 ===
+2026-07-21 11:24:17 [INFO] weather-oracle-agent.weather: Open-Meteo readings: rain=0.0mm wind=16.3km/h temp=27.6°C
+2026-07-21 11:24:18 [INFO] weather-oracle-agent.chain: submitting reading via CLI: metric=0 value_fp=0 conf=9500 bps
+2026-07-21 11:25:52 [INFO] weather-oracle-agent.chain: transaction confirmed: 271f021d4c712a0052be148a3f75874a012177fbc679e1e2e2e6ebd54cdea906
+2026-07-21 11:25:52 [INFO] weather-oracle-agent: POSTED rainfall_mm=0.00 (fp=0, confidence=9500 bps) → tx: 271f021d4c712a0052be148a3f75874a012177fbc679e1e2e2e6ebd54cdea906
+2026-07-21 11:25:59 [ERROR] weatheroracle-agent.gist: Failed to update gist: 404 Client Error: Not Found for url: https://api.github.com/gists/0955aac10d21ab78b31d11b8e2f1db27
+2026-07-21 11:26:00 [INFO] weather-oracle-agent.confidence: metric 1: primary=16.30 secondary=22.00 pct_diff=35.0% → 4000 bps confidence
+2026-07-21 11:26:00 [WARNING] weather-oracle-agent: SKIP wind_speed_kmh=16.30 — confidence 4000 bps below threshold 7000 bps
+2026-07-21 11:26:01 [INFO] weather-oracle-agent.confidence: metric 2: primary=27.60 secondary=29.00 pct_diff=5.1% → 8000 bps confidence
+2026-07-21 11:26:01 [INFO] weather-oracle-agent.chain: submitting reading via CLI: metric=2 value_fp=2760 conf=8000 bps
+2026-07-21 11:26:43 [INFO] weather-oracle-agent.chain: transaction confirmed: b0283696842e894a0691816e2d223b746bd3fbf10da3897436ced9be87628bee
+2026-07-21 11:26:43 [INFO] weather-oracle-agent: POSTED temperature_c=27.60 (fp=2760, confidence=8000 bps) → tx: b0283696842e894a0691816e2d223b746bd3fbf10da3897436ced9be87628bee
+2026-07-21 11:26:45 [ERROR] weatheroracle-agent.gist: Failed to update gist: 404 Client Error: Not Found for url: https://api.github.com/gists/0955aac10d21ab78b31d11b8e2f1db27
+2026-07-21 11:26:45 [INFO] weather-oracle-agent: === tick complete: {'rainfall_mm': {'status': 'posted', 'value': 0.0, 'value_fp': 0, 'confidence_bps': 9500, 'tx_hash': '271f021d4c712a0052be148a3f75874a012177fbc679e1e2e2e6ebd54cdea906'}, 'wind_speed_kmh': {'status': 'skipped', 'value': 16.3, 'confidence_bps': 4000}, 'temperature_c': {'status': 'posted', 'value': 27.6, 'value_fp': 2760, 'confidence_bps': 8000, 'tx_hash': 'b0283696842e894a0691816e2d223b746bd3fbf10da3897436ced9be87628bee'}} ===
+2026-07-21 11:26:45 [INFO] weather-oracle-agent: sleeping 300s...
+2026-07-21 11:32:12 [INFO] weather-oracle-agent: --- tick #58 ---
+2026-07-21 11:32:12 [INFO] weather-oracle-agent: === tick started at 2026-07-21T10:32:12.680703+00:00 ===
+2026-07-21 11:32:13 [INFO] weather-oracle-agent.weather: Open-Meteo readings: rain=0.0mm wind=17.4km/h temp=27.7°C
+2026-07-21 11:32:14 [INFO] weather-oracle-agent.chain: submitting reading via CLI: metric=0 value_fp=0 conf=9500 bps
+2026-07-21 11:32:58 [INFO] weather-oracle-agent.chain: transaction confirmed: 031023605fd73dd1415716477cfb20cb10636252fe3157bbfc1c517f23661a33
+2026-07-21 11:32:58 [INFO] weather-oracle-agent: POSTED rainfall_mm=0.00 (fp=0, confidence=9500 bps) → tx: 031023605fd73dd1415716477cfb20cb10636252fe3157bbfc1c517f23661a33
+2026-07-21 11:33:01 [ERROR] weatheroracle-agent.gist: Failed to update gist: 404 Client Error: Not Found for url: https://api.github.com/gists/0955aac10d21ab78b31d11b8e2f1db27
+2026-07-21 11:33:02 [INFO] weather-oracle-agent.confidence: metric 1: primary=17.40 secondary=22.00 pct_diff=26.4% → 4000 bps confidence
+2026-07-21 11:33:02 [WARNING] weather-oracle-agent: SKIP wind_speed_kmh=17.40 — confidence 4000 bps below threshold 7000 bps
+2026-07-21 11:33:03 [INFO] weather-oracle-agent.confidence: metric 2: primary=27.70 secondary=29.00 pct_diff=4.7% → 9500 bps confidence
+2026-07-21 11:33:03 [INFO] weather-oracle-agent.chain: submitting reading via CLI: metric=2 value_fp=2770 conf=9500 bps
+2026-07-21 11:33:44 [INFO] weather-oracle-agent.chain: transaction confirmed: 63ddd6c9072619a88e09e8943f0ca1d0e1bfad910dce455387bd39b9be48dd9b
+2026-07-21 11:33:44 [INFO] weather-oracle-agent: POSTED temperature_c=27.70 (fp=2770, confidence=9500 bps) → tx: 63ddd6c9072619a88e09e8943f0ca1d0e1bfad910dce455387bd39b9be48dd9b
+2026-07-21 11:33:46 [ERROR] weatheroracle-agent.gist: Failed to update gist: 404 Client Error: Not Found for url: https://api.github.com/gists/0955aac10d21ab78b31d11b8e2f1db27
+2026-07-21 11:33:46 [INFO] weather-oracle-agent: === tick complete: {'rainfall_mm': {'status': 'posted', 'value': 0.0, 'value_fp': 0, 'confidence_bps': 9500, 'tx_hash': '031023605fd73dd1415716477cfb20cb10636252fe3157bbfc1c517f23661a33'}, 'wind_speed_kmh': {'status': 'skipped', 'value': 17.4, 'confidence_bps': 4000}, 'temperature_c': {'status': 'posted', 'value': 27.7, 'value_fp': 2770, 'confidence_bps': 9500, 'tx_hash': '63ddd6c9072619a88e09e8943f0ca1d0e1bfad910dce455387bd39b9be48dd9b'}} ===
+2026-07-21 11:33:46 [INFO] weather-oracle-agent: sleeping 300s...
+2026-07-21 11:39:12 [INFO] weather-oracle-agent: --- tick #59 ---
+2026-07-21 11:39:12 [INFO] weather-oracle-agent: === tick started at 2026-07-21T10:39:12.023821+00:00 ===
+2026-07-21 11:39:13 [INFO] weather-oracle-agent.weather: Open-Meteo readings: rain=0.0mm wind=18.5km/h temp=27.9°C
+2026-07-21 11:39:14 [INFO] weather-oracle-agent.chain: submitting reading via CLI: metric=0 value_fp=0 conf=9500 bps
+2026-07-21 11:40:02 [INFO] weather-oracle-agent.chain: transaction confirmed: 1973dca36f164d811619a69ef587b12a71d7191872d3521ef75b62bf946aea57
+2026-07-21 11:40:02 [INFO] weather-oracle-agent: POSTED rainfall_mm=0.00 (fp=0, confidence=9500 bps) → tx: 1973dca36f164d811619a69ef587b12a71d7191872d3521ef75b62bf946aea57
+2026-07-21 11:40:08 [ERROR] weatheroracle-agent.gist: Failed to update gist: 404 Client Error: Not Found for url: https://api.github.com/gists/0955aac10d21ab78b31d11b8e2f1db27
+2026-07-21 11:40:10 [INFO] weather-oracle-agent.confidence: metric 1: primary=18.50 secondary=22.00 pct_diff=18.9% → 7000 bps confidence
+2026-07-21 11:40:10 [INFO] weather-oracle-agent.chain: submitting reading via CLI: metric=1 value_fp=1850 conf=7000 bps
+2026-07-21 11:40:57 [INFO] weather-oracle-agent.chain: transaction confirmed: 309e50ff5c86a21202b9a4bfde27f3ae3417c34bc1f3ad26f20c55b24e5d5fa7
+2026-07-21 11:40:57 [INFO] weather-oracle-agent: POSTED wind_speed_kmh=18.50 (fp=1850, confidence=7000 bps) → tx: 309e50ff5c86a21202b9a4bfde27f3ae3417c34bc1f3ad26f20c55b24e5d5fa7
+2026-07-21 11:40:59 [ERROR] weatheroracle-agent.gist: Failed to update gist: 404 Client Error: Not Found for url: https://api.github.com/gists/0955aac10d21ab78b31d11b8e2f1db27
+2026-07-21 11:41:00 [INFO] weather-oracle-agent.confidence: metric 2: primary=27.90 secondary=29.00 pct_diff=3.9% → 9500 bps confidence
+2026-07-21 11:41:00 [INFO] weather-oracle-agent.chain: submitting reading via CLI: metric=2 value_fp=2790 conf=9500 bps
+2026-07-21 11:41:37 [INFO] weather-oracle-agent.chain: transaction confirmed: 0f0bc3e6fca602fa3a2191b7251271d903e780e4157db9b3af01b079c651637c
+2026-07-21 11:41:37 [INFO] weather-oracle-agent: POSTED temperature_c=27.90 (fp=2790, confidence=9500 bps) → tx: 0f0bc3e6fca602fa3a2191b7251271d903e780e4157db9b3af01b079c651637c
+2026-07-21 11:41:40 [ERROR] weatheroracle-agent.gist: Failed to update gist: 404 Client Error: Not Found for url: https://api.github.com/gists/0955aac10d21ab78b31d11b8e2f1db27
+2026-07-21 11:41:40 [INFO] weather-oracle-agent: === tick complete: {'rainfall_mm': {'status': 'posted', 'value': 0.0, 'value_fp': 0, 'confidence_bps': 9500, 'tx_hash': '1973dca36f164d811619a69ef587b12a71d7191872d3521ef75b62bf946aea57'}, 'wind_speed_kmh': {'status': 'posted', 'value': 18.5, 'value_fp': 1850, 'confidence_bps': 7000, 'tx_hash': '309e50ff5c86a21202b9a4bfde27f3ae3417c34bc1f3ad26f20c55b24e5d5fa7'}, 'temperature_c': {'status': 'posted', 'value': 27.9, 'value_fp': 2790, 'confidence_bps': 9500, 'tx_hash': '0f0bc3e6fca602fa3a2191b7251271d903e780e4157db9b3af01b079c651637c'}} ===
+2026-07-21 11:41:40 [INFO] weather-oracle-agent: sleeping 300s...

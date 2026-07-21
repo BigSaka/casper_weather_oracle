@@ -104,10 +104,12 @@ function MetricCard({ label, value, unit, confidence, sparkData, color, threshol
 
 // ─── MAIN APP ───────────────────────────────────────────────────────────────────
 export default function App() {
+  const { readings, accuracy, totalReadings, streak, isLive, lastFetched } = useOracleData();
+  const timerLabel = lastFetched 
+  ? `${Math.floor((Date.now() - lastFetched) / 1000)}s ago`
+  : 'waiting...';
   const [scrolled, setScrolled]         = useState(false);
   const [activeSection, setActiveSection] = useState('overview');
-  const [tick, setTick]                 = useState(0);
-  const [seconds, setSeconds]           = useState(0);
 
   const refs = {
     overview: useRef(null),
@@ -123,14 +125,6 @@ export default function App() {
     return () => window.removeEventListener('scroll', fn);
   }, []);
 
-  // Live-ish tick for mock data animation
-  useEffect(() => {
-    const t = setInterval(() => {
-      setTick(n => n + 1);
-      setSeconds(n => n + 3);
-    }, 3000);
-    return () => clearInterval(t);
-  }, []);
 
   // Intersection observer for active nav section
   useEffect(() => {
@@ -146,10 +140,10 @@ export default function App() {
   };
 
   // Animated readings
-  const rain = parseFloat((RAIN_HIST[tick % RAIN_HIST.length] + Math.sin(tick * 0.7) * 0.4).toFixed(1));
-  const wind = parseFloat((WIND_HIST[tick % WIND_HIST.length] + Math.sin(tick * 0.5) * 0.5).toFixed(1));
-  const temp = parseFloat((TEMP_HIST[tick % TEMP_HIST.length] + Math.sin(tick * 0.6) * 0.2).toFixed(1));
-  const timerLabel = seconds < 60 ? `${seconds}s ago` : `${Math.floor(seconds / 60)}m ago`;
+// Live readings from API
+const rain = readings.rainfall.value;
+const wind = readings.windSpeed.value;
+const temp = readings.temperature.value;
 
   // Nav link
   const NavLink = ({ id, label }) => (
@@ -330,13 +324,13 @@ export default function App() {
         </div>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16 }}>
-          <MetricCard label="RAINFALL"   value={rain} unit="mm"   confidence={98}
+          <MetricCard label="RAINFALL"   value={rain} unit="mm" confidence={readings.rainfall.confidence}
                       sparkData={RAIN_HIST} color="#5B9CF6"
                       threshold={50}  thresholdLabel="50mm"/>
-          <MetricCard label="WIND SPEED" value={wind} unit="km/h" confidence={94}
+          <MetricCard label="WIND SPEED" value={wind} unit="km/h" confidence={readings.windSpeed.confidence}
                       sparkData={WIND_HIST} color="#9CA3AF"
                       threshold={80}  thresholdLabel="80km/h"/>
-          <MetricCard label="TEMPERATURE" value={temp} unit="°C"  confidence={89}
+          <MetricCard label="TEMPERATURE" value={temp} unit="°C"  confidence={readings.temperature.confidence}
                       sparkData={TEMP_HIST} color="#F97316"
                       threshold={40}  thresholdLabel="40°C"/>
         </div>
