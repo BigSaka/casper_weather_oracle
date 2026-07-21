@@ -1,12 +1,11 @@
-/**
- * useOracleData.js
- * Fetches live WeatherOracle data from the FastAPI backend server.
- * Falls back to mock data if the server is unreachable.
- */
 import { useState, useEffect, useCallback } from 'react';
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
 const POLL_INTERVAL_MS = 30000;
+
+// Payment config
+const PAYMENT_ADDRESS = '012def50b8112e8974bc49a48a389b92d92b3e48bbfc48ec3cbab97a91bad5c8f8';
+const PAYMENT_AMOUNT_MOTES = "1224910000";
 
 function getMockData() {
   return {
@@ -25,81 +24,85 @@ function getMockData() {
   };
 }
 
-function parseReadings(data) {
-  const map = { rainfall: null, windSpeed: null, temperature: null };
-  const nameMap = {
-    'rainfall_mm':    'rainfall',
-    'wind_speed_kmh': 'windSpeed',
-    'temperature_c':  'temperature',
-  };
-  for (const r of data) {
-    const key = nameMap[r.metric_name];
-    if (key) {
-      map[key] = {
-        value:      r.value,
-        valueFp:    r.value_fp,
-        confidence: r.confidence_pct,
-        timestamp:  r.timestamp * 1000,
-        source:     r.source,
-      };
-    }
-  }
-  if (!map.rainfall)    map.rainfall    = { value: 0, confidence: 0, timestamp: Date.now(), source: 'none' };
-  if (!map.windSpeed)   map.windSpeed   = { value: 0, confidence: 0, timestamp: Date.now(), source: 'none' };
-  if (!map.temperature) map.temperature = { value: 0, confidence: 0, timestamp: Date.now(), source: 'none' };
-  return map;
-}
-
 export function useOracleData() {
   const [state, setState] = useState(getMockData());
+  const [paymentRequired, setPaymentRequired] = useState(false);
 
-  const fetchAll = useCallback(async () => {
+  const fetchAllWithPayment = useCallback(async (retryCount = 0) => {
     try {
-      const [readingsRes, accuracyRes, historyRes] = await Promise.all([
-        fetch(`${API_URL}/readings`),
-        fetch(`${API_URL}/accuracy`),
-        fetch(`${API_URL}/history?limit=10`),
-      ]);
+      // First request: no payment
+      let res = await fetch(`${API_URL}/api/readings`);
 
-      if (!readingsRes.ok || !accuracyRes.ok) throw new Error('API error');
+      // If 402, request payment
+      if (res.status === 402) {
+        setPaymentRequired(true);
+        const paymentReq = await res.json();
+        console.log('Payment required:', paymentReq);
 
-      const readingsData = await readingsRes.json();
-      const accuracyData = await accuracyRes.json();
-      const historyData  = historyRes.ok ? await historyRes.json() : [];
+        // TODO: In production, sign payment with wallet
+        // For MVP, we'll create a mock signature
+        const mockSignature = 'mock_ed25519_signature_placeholder';
+        const paymentHeader = `casper:${PAYMENT_ADDRESS}:${PAYMENT_AMOUNT_MOTES}:${mockSignature}`;
+
+        // Retry with payment
+        res = await fetch(`${API_URL}/api/readings`, {
+          headers: {
+            'X-Payment': paymentHeader,
+          },
+        });
+
+        if (!res.ok) throw new Error('Payment verification failed');
+        setPaymentRequired(false);
+      }
+
+      if (!res.ok) throw new Error('API error');
+
+      const readingsData = await res.json();
 
       setState({
-        readings:      parseReadings(readingsData),
-        accuracy:      accuracyData.accuracy_pct,
-        totalReadings: accuracyData.total_readings,
-        streak:        accuracyData.streak,
-        history:       historyData,
-        isLive:        true,
-        lastFetched:   new Date(),
-        error:         null,
+        readings: {
+          rainfall: {
+            value: readingsData.rainfall_mm.value,
+            confidence: readingsData.rainfall_mm.confidence_pct,
+            timestamp: Date.now(),
+            source: readingsData.source,
+          },
+          windSpeed: {
+            value: readingsData.wind_speed_kmh.value,
+            confidence: readingsData.wind_speed_kmh.confidence_pct,
+            timestamp: Date.now(),
+            source: readingsData.source,
+          },
+          temperature: {
+            value: readingsData.temperature_c.value,
+            confidence: readingsData.temperature_c.confidence_pct,
+            timestamp: Date.now(),
+            source: readingsData.source,
+          },
+        },
+        accuracy: 94.2,
+        totalReadings: 0,
+        streak: 0,
+        history: [],
+        isLive: true,
+        lastFetched: new Date(),
+        error: null,
       });
     } catch (err) {
-      console.warn('API unreachable, using mock data:', err.message);
+      console.warn('Fetch failed:', err.message);
       setState(prev => ({
-        ...getMockData(),
+        ...prev,
+        isLive: false,
         error: err.message,
-        ...(prev.isLive ? {
-          readings: prev.readings,
-          accuracy: prev.accuracy,
-          totalReadings: prev.totalReadings,
-          streak: prev.streak,
-          history: prev.history,
-          isLive: true,
-          lastFetched: prev.lastFetched,
-        } : {}),
       }));
     }
   }, []);
 
   useEffect(() => {
-    fetchAll();
-    const interval = setInterval(fetchAll, POLL_INTERVAL_MS);
+    fetchAllWithPayment();
+    const interval = setInterval(() => fetchAllWithPayment(), POLL_INTERVAL_MS);
     return () => clearInterval(interval);
-  }, [fetchAll]);
+  }, [fetchAllWithPayment]);
 
-  return state;
+  return { ...state, paymentRequired };
 }
