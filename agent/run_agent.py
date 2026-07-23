@@ -1,6 +1,6 @@
 """
 Main entry point for the WeatherOracle autonomous agent.
-Now submits readings to Railway API backend after each on-chain post.
+Stores readings to GitHub JSON file for frontend to fetch.
 """
 import argparse
 import logging
@@ -15,7 +15,7 @@ from .config import AgentConfig, DEFAULT_REGION, to_fixed_point, METRIC_NAMES
 from .weather_source import fetch_current_readings, fetch_secondary_check
 from .confidence import score_confidence
 from .chain_client import ChainClient
-from .api_submit import submit_reading_to_backend
+from .github_sync import save_reading
 
 logging.basicConfig(
     level=logging.INFO,
@@ -39,21 +39,12 @@ def run_once(config: AgentConfig, chain: ChainClient) -> dict:
     for reading in readings:
         metric_name = METRIC_NAMES[reading.metric]
         secondary = fetch_secondary_check(config.region, reading.metric)
-        confidence_bps = score_confidence(
-            reading.metric, reading.value, secondary
-        )
+        confidence_bps = score_confidence(reading.metric, reading.value, secondary)
 
         if confidence_bps < config.min_confidence_bps_to_post:
-            log.warning(
-                "SKIP %s=%.2f — confidence %d bps below threshold %d bps",
-                metric_name, reading.value,
-                confidence_bps, config.min_confidence_bps_to_post,
-            )
-            results[metric_name] = {
-                "status": "skipped",
-                "value": reading.value,
-                "confidence_bps": confidence_bps,
-            }
+            log.warning("SKIP %s=%.2f — confidence %d bps below threshold %d bps",
+                metric_name, reading.value, confidence_bps, config.min_confidence_bps_to_post)
+            results[metric_name] = {"status": "skipped", "value": reading.value, "confidence_bps": confidence_bps}
             continue
 
         value_fp = to_fixed_point(reading.value)
@@ -64,34 +55,17 @@ def run_once(config: AgentConfig, chain: ChainClient) -> dict:
                 timestamp=reading.timestamp,
                 source_confidence_bps=confidence_bps,
             )
-            log.info(
-                "POSTED %s=%.2f (fp=%d, confidence=%d bps) → tx: %s",
-                metric_name, reading.value, value_fp, confidence_bps, tx_hash,
-            )
+            log.info("POSTED %s=%.2f (fp=%d, confidence=%d bps) → tx: %s",
+                metric_name, reading.value, value_fp, confidence_bps, tx_hash)
 
-            # Submit to Railway API backend (so frontend can fetch with x402)
+            # Save to GitHub JSON
             confidence_pct = round((confidence_bps / 10000) * 100)
-            submit_reading_to_backend(
-                metric_name=metric_name,
-                value=reading.value,
-                confidence_pct=confidence_pct,
-                timestamp=int(reading.timestamp),
-            )
+            save_reading(metric_name, reading.value, confidence_pct)
 
-            results[metric_name] = {
-                "status": "posted",
-                "value": reading.value,
-                "value_fp": value_fp,
-                "confidence_bps": confidence_bps,
-                "tx_hash": tx_hash,
-            }
+            results[metric_name] = {"status": "posted", "value": reading.value, "value_fp": value_fp, "confidence_bps": confidence_bps, "tx_hash": tx_hash}
         except RuntimeError as e:
             log.error("FAILED to post %s: %s", metric_name, e)
-            results[metric_name] = {
-                "status": "failed",
-                "value": reading.value,
-                "error": str(e),
-            }
+            results[metric_name] = {"status": "failed", "value": reading.value, "error": str(e)}
         except Exception:
             log.exception("unexpected error posting %s", metric_name)
             results[metric_name] = {"status": "error"}
@@ -102,16 +76,8 @@ def run_once(config: AgentConfig, chain: ChainClient) -> dict:
 
 def run_forever(config: AgentConfig) -> None:
     chain = ChainClient.from_config(config)
-    log.info(
-        "WeatherOracle agent started\n"
-        "  region:   %s\n"
-        "  interval: %ds (every %.1f minutes)\n"
-        "  contract: %s",
-        config.region.name,
-        config.poll_interval_seconds,
-        config.poll_interval_seconds / 60,
-        config.contract_hash,
-    )
+    log.info("WeatherOracle agent started\n  region:   %s\n  interval: %ds\n  contract: %s",
+        config.region.name, config.poll_interval_seconds, config.contract_hash)
     tick_count = 0
     while True:
         tick_count += 1
