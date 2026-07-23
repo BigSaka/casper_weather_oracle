@@ -77,3 +77,33 @@ python -m agent.run_agent
 
 MIT
 # Updated Tue Jul 21 12:54:41 WAT 2026
+
+## Architecture
+
+- **Agent**: Autonomous Python agent fetching weather via Open-Meteo, scoring confidence
+- **Contract**: Casper smart contract storing readings on-chain immutably
+- **x402 Payments**: Agents pay per API request with Ed25519 payment proof
+- **MCP Server**: Exposes readings via `/mcp/readings`, `/mcp/reading/{metric}`, `/mcp/confidence`
+- **Dashboard**: Multi-region UI (Miami, Lagos, Accra) with real confidence scores
+
+## Features
+
+- ✅ Real weather data from autonomous agent
+- ✅ x402 micropayment protocol for data access
+- ✅ Confidence scoring via multi-source validation
+- ✅ Model Context Protocol (MCP) server for AI agents
+- ✅ Multi-region support (expandable)
+- ✅ On-chain verification with Casper testnet
+
+## Quick Start
+
+```bash
+# Start agent
+./.venv/bin/python -m agent.run_agent
+
+# Start MCP server
+./.venv/bin/python mcp_server.py 9000
+
+# Access readings
+curl http://localhost:9000/mcp/readings
+```
